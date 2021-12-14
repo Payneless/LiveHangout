@@ -4,11 +4,11 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        fName='demo', discordHandle='Demo#9991', profilePhoto='https://www.imore.com/sites/imore.com/files/styles/large/public/field/image/2021/04/discord-logo.jpg', email='demo@aa.io', password='password')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        fName='marnie', discordHandle='Marnie#1234', profilePhoto='https://www.howtogeek.com/wp-content/uploads/2021/07/Discord-Logo-Lede.png?height=200p&trim=2,2,2,2', email='marnie@aa.io', password='password')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        fName='bobbie', discordHandle='Bobbie#5432', profilePhoto='https://better-default-discord.netlify.app/Icons/Gradient-Red.png', email='bobbie@aa.io', password='password')
 
     db.session.add(demo)
     db.session.add(marnie)
