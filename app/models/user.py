@@ -7,9 +7,13 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    discordHandle = db.Column(db.String, nullable=False, unique=True)
+    fName = db.Column(db.String, nullable=False, unique=True)
+    profilePhoto = db.Column(db.String)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    createdAt = db.Column(db.Datetime, nullable=False)
+    updatedAt = db.Column(db.Datetime, nullable=False)
 
     @property
     def password(self):
