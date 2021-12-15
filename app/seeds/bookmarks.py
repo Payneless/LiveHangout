@@ -17,6 +17,6 @@ def seed_bookmarks():
 
 	db.session.commit()
 
-	def undo_bookmarks():
+def undo_bookmarks():
 		db.session.execute('TRUNCATE bookmarks RESTART IDENTITY CASCADE;')
 		db.session.commit()
