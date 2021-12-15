@@ -63,4 +63,4 @@ There is a layer in the Dockerfile that will install psycopg2 (not binary) for u
 
 # Running Live
 
-> The live link for this project is located here:
+> The live link for this project is located here: live-hangouts.herokuapp.com
