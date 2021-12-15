@@ -16,6 +16,10 @@ class User(db.Model, UserMixin):
     createdAt = db.Column(db.DateTime, default=datetime.datetime.now, nullable=False)
     updatedAt = db.Column(db.DateTime, default=datetime.datetime.now, nullable=False)
 
+    hangouts = db.relationship("Hangout", back_populates='user', cascade='all, delete')
+    rsvps = db.relationship("RSVP", back_populates='user', cascade='all, delete')
+    bookmarks = db.relationship("Bookmark", back_populates='user', cascade='all, delete')
+
     @property
     def password(self):
         return self.hashed_password
@@ -33,5 +37,8 @@ class User(db.Model, UserMixin):
             'fName': self.fName,
             'discordHandle': self.discordHandle,
             'profilePhoto': self.profilePhoto,
+            'hangouts':  [hangout.to_dict() for hangout in self.hangouts],
+            'RSVPs': [rsvp.to_dict() for rsvp in self.rsvps],
+            'Bookmarks': [bookmark.to_dict() for bookmark in self.bookmarks],
             'email': self.email
         }

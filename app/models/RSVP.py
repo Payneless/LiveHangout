@@ -10,9 +10,12 @@ class RSVP(db.Model):
 	createdAt = db.Column(db.DateTime, default=datetime.datetime.now, nullable=False)
 	updatedAt = db.Column(db.DateTime, default=datetime.datetime.now, nullable=False)
 
+	user = db.relationship('User', back_populates='rsvps')
+	hangout = db.relationship('Hangout', back_populates='rsvps')
+
 	def to_dict(self):
 		return{
 			"id": self.id,
-			"userId": self.userId,
-			"hangoutId": self.hangoutId
+			"user": self.userId,
+			"hangout": self.hangoutId
 		}

@@ -1,0 +1,17 @@
+.nav-bar {
+  display: flex;
+  justify-content: right;
+}
+.nav-bar div {
+  margin-top: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  background-color: rgb(218, 159, 147);
+  padding: 0.5rem;
+  border-radius: 15%;
+  justify-content: center;
+}
+.active {
+  text-decoration: none;
+  color: white;
+}
