@@ -19,6 +19,10 @@ class Hangout(db.Model):
 	createdAt=db.Column(db.DateTime, default=datetime.datetime.now, nullable=False)
 	updatedAt=db.Column(db.DateTime, default=datetime.datetime.now, nullable=False)
 
+	user = db.relationship('User', back_populates='hangouts')
+	rsvps = db.relationship('RSVP', back_populates="hangout", cascade='all, delete')
+	bookmarks = db.relationship('Bookmark', back_populates="hangout", cascade='all, delete')
+
 
 
 
@@ -34,6 +38,6 @@ class Hangout(db.Model):
 			"category": self.category,
 			"startDate": self.startDate,
 			"endDate": self.endDate,
-			"startTime": self.startTime,
-			"endTime": self.endTime
+			"startTime": str(self.startTime),
+			"endTime": str(self.endTime)
 		}

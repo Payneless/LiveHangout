@@ -25,8 +25,12 @@ function User() {
       <li>
         <strong>User Id</strong> {userId}
       </li>
+      <img src={user.profilePhoto} alt="profile photo"></img>
       <li>
         <strong>Username</strong> {user.fName}
+      </li>
+      <li>
+        <strong>Discord Handle</strong> {user.discordHandle}
       </li>
       <li>
         <strong>Email</strong> {user.email}
