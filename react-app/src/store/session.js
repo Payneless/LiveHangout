@@ -56,27 +56,27 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const demoLogin = () => async (dispatch) => {
-  const response = await fetch('/api/auth/login', {
-    method: 'POST',
+  const response = await fetch("/api/auth/login", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: 'demo@aa.io',
-      password: 'password'
+      email: "demo@aa.io",
+      password: "password",
     }),
   });
   if (response.ok) {
     const data = await response.json();
-    dispatch(setUser(data))
+    dispatch(setUser(data));
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
-    if(data.errors) {
+    if (data.errors) {
       return data.errors;
     }
   } else {
-    return ['An error occurred. Code needs fixed.']
+    return ["An error occurred. Code needs fixed."];
   }
 };
 

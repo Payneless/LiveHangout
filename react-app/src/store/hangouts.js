@@ -11,7 +11,7 @@ const get = (payload) => {
 
 export const getAllHangouts = () => async (dispatch) => {
   console.log("hello");
-  const response = await fetch("/api/hangouts");
+  const response = await fetch("/api/hangouts/");
 
   if (response.ok) {
     const hangouts = await response.json();
