@@ -29,7 +29,7 @@ class Hangout(db.Model):
 	def to_dict(self):
 		return {
 			"id": self.id,
-			"host": self.host,
+			"host": self.user.fName,
 			"title": self.title,
 			"link": self.link,
 			"image": self.image,
@@ -39,5 +39,6 @@ class Hangout(db.Model):
 			"startDate": self.startDate,
 			"endDate": self.endDate,
 			"startTime": str(self.startTime),
-			"endTime": str(self.endTime)
+			"endTime": str(self.endTime),
+			"rsvps": [rsvp.to_dict() for rsvp in self.rsvps]
 		}
