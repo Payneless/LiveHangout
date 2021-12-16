@@ -40,5 +40,6 @@ class Hangout(db.Model):
 			"endDate": self.endDate,
 			"startTime": str(self.startTime),
 			"endTime": str(self.endTime),
-			"rsvps": [rsvp.to_dict() for rsvp in self.rsvps]
+			"rsvps": [rsvp.to_dict() for rsvp in self.rsvps],
+			"bookmarks": [bookmark.to_dict() for bookmark in self.bookmarks]
 		}
