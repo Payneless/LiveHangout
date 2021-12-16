@@ -1,0 +1,9 @@
+.hangouts-container {
+  display: flex;
+  flex-direction: row;
+}
+.hangout {
+  display: flex;
+  flex-direction: column;
+  width: 10rem;
+}
