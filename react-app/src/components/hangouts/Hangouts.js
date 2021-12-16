@@ -29,19 +29,22 @@ function Hangouts() {
           bookmarks,
         }) => (
           <div key={id} className="hangout">
-            <span>{title}</span>
-            <span>Hosted by: {host}</span>
-            <span>Open for RSVP: {open.toString()}</span>
-            {open && <span>RSVPs: {rsvps.length}</span>}
-            {!open && <span>Bookmarks: {bookmarks.length}</span>}
-            <span>{description}</span>
             <img src={image} alt="hangout_photo"></img>
-            <span>
-              Starts on:{startDate} Ends on:{endDate}
-            </span>
-            <span>
-              Timeframe:{startTime}-{endTime}
-            </span>
+            <div className="info">
+              <span>{title}</span>
+              <span>Hosted by: {host}</span>
+              <span>Open for RSVP: {open.toString()}</span>
+              {open && <span>RSVPs: {rsvps.length}</span>}
+              {!open && <span>Bookmarks: {bookmarks.length}</span>}
+              <span>{description}</span>
+              <span>
+                Starts on:{startDate.slice(0, 17)} Ends on:
+                {endDate.slice(0, 17)}
+              </span>
+              <span>
+                Timeframe:{startTime.slice(0, 5)}-{endTime.slice(0, 5)}
+              </span>
+            </div>
           </div>
         )
       )}
