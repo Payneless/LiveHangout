@@ -9,5 +9,6 @@ hangouts_routes = Blueprint('hangouts', __name__)
 @login_required
 def hangouts():
 	hangouts = Hangout.query.all().order_by(Hangout.createdAt.desc())
+	print("yo", hangouts)
 
 	return {'hangouts': [hangout.to_dict() for hangout in hangouts]}

@@ -31,7 +31,7 @@ function App() {
       <NavBar />
       <Switch>
         <ProtectedRoute path="/home" exact={true}>
-          <h1>My Home Page</h1>
+          <Hangouts />
         </ProtectedRoute>
         <Route path="/" exact={true}>
           <Splash />
