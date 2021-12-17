@@ -4,9 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Hangouts.css";
 
 function Hangouts({ hangouts }) {
-  const dispatch = useDispatch();
-
-
   return (
     <div className="hangout-container">
       {hangouts?.map(

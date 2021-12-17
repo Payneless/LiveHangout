@@ -21,8 +21,10 @@ const Home = () => {
         <h1 className="welcome">Live Hangout</h1>
       </div>
       <div className="categories">
-        {catArr?.map((category) => (
-          <div className="category">{category}</div>
+        {catArr?.map((category, idx) => (
+          <div key={idx} className="category">
+            {category}
+          </div>
         ))}
       </div>
       <div className="main-container">
