@@ -7,11 +7,12 @@ import "./home.css";
 const Home = () => {
   const dispatch = useDispatch();
   const hangouts = useSelector((state) => Object.values(state.hangouts));
-  console.log("hangouts", hangouts);
+  const sortedHangouts = useSelector((state) => Object.values(state.hangouts));
+  const [selected, setSelected] = useState("");
+  sortedHangouts?.sort((a, b) => b.rsvps.length - a.rsvps.length);
   const categories = new Set();
   hangouts?.map(({ category }) => categories.add(category));
   const catArr = Array.from(categories);
-
   useEffect(() => {
     dispatch(getAllHangouts());
   }, [dispatch]);
@@ -22,13 +23,23 @@ const Home = () => {
       </div>
       <div className="categories">
         {catArr?.map((category, idx) => (
-          <div key={idx} className="category">
+          <div
+            key={idx}
+            className="category"
+            onClick={() => setSelected(category)}
+          >
             {category}
           </div>
         ))}
       </div>
       <div className="main-container">
-        <Hangouts hangouts={hangouts} />
+        <Hangouts
+          hangouts={
+            selected
+              ? sortedHangouts.filter((hangout) => hangout.category == selected)
+              : sortedHangouts
+          }
+        />
       </div>
       <div className="see-more"></div>
     </div>

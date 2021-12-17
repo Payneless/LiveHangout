@@ -1,9 +1,14 @@
-.search-button {
-  width: 100%;
-}
 .explore {
   width: 8rem;
   height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(137, 6, 32);
+}
+.mag-glass {
+  height: 50px;
+  width: auto;
 }
 .splash-page {
   display: flex;
@@ -22,4 +27,23 @@
 .event:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   transform: translateY(3px);
+}
+.welcome-message {
+  font-family: "Heebo", sans-serif;
+  font-weight: 800;
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+}
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.preview {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(137, 6, 32);
+  border-radius: 0.5rem;
 }

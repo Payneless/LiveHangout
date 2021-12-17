@@ -18,6 +18,7 @@ def seed_hangouts():
 		host=1, title="The Future Discussion", link="https://discord.gg/jJvff5Y6Ef", image="https://images.immediate.co.uk/production/volatile/sites/4/2018/08/22-ideas-606ea9b.jpg?webp=true&quality=90&crop=8px%2C0px%2C1183px%2C509px&resize=940%2C399", description="A talk in the future, about the future! Come discuss potential upcoming technologies and breakthroughs and what they can mean for the world in the coming years.", category="AMA", startDate=date(2022, 4, 1), endDate=date(2022, 4, 2), startTime=time(12,00), endTime=time(00,00)
 	)
 
+
 	db.session.add(demo)
 	db.session.add(watchParty)
 	db.session.add(ListentoThis)

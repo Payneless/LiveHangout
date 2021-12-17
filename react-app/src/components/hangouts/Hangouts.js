@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Hangouts.css";
 
 function Hangouts({ hangouts }) {
+  const top5 = hangouts.slice(0, 6);
   return (
     <div className="hangout-container">
-      {hangouts?.map(
+      {top5?.map(
         ({
           id,
           title,
