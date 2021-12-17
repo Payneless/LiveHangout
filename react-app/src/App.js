@@ -10,6 +10,7 @@ import User from "./components/User";
 import { authenticate } from "./store/session";
 import Hangouts from "./components/hangouts/Hangouts";
 import Splash from "./components/splash/splash";
+import Home from "./components/Home/home";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,7 +32,7 @@ function App() {
       <NavBar />
       <Switch>
         <ProtectedRoute path="/home" exact={true}>
-          <Hangouts />
+          <Home />
         </ProtectedRoute>
         <Route path="/" exact={true}>
           <Splash />
