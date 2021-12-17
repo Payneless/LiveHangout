@@ -3,3 +3,6 @@
   padding: 1rem;
   background-color: rgb(235, 212, 203);
 }
+.is-blurred {
+  filter: blur(10px);
+}

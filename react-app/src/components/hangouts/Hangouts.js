@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { getAllHangouts } from "../../store/hangouts";
-import { useDispatch, useSelector } from "react-redux";
+import { Modal } from "../../context/modal";
 import "./Hangouts.css";
+import HangoutDetail from "./HangoutDetail";
 
 function Hangouts({ hangouts }) {
   const top5 = hangouts.slice(0, 6);
+  const [showModal, setShowModal] = useState(false);
+  const [hangout, setHangout] = useState("");
+
+  const displayHangout = (id) => {
+    setHangout(id);
+    setShowModal(true);
+  };
   return (
     <div className="hangout-container">
       {top5?.map(
@@ -22,7 +29,7 @@ function Hangouts({ hangouts }) {
           rsvps,
           bookmarks,
         }) => (
-          <div key={id} className="hangout">
+          <div key={id} className="hangout" onClick={() => displayHangout(id)}>
             <img src={image} className="photo" alt="hangout_photo"></img>
             <div className="info">
               <span>{title}</span>
@@ -40,6 +47,11 @@ function Hangouts({ hangouts }) {
             </div>
           </div>
         )
+      )}
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <HangoutDetail hangoutId={hangout} />
+        </Modal>
       )}
     </div>
   );
