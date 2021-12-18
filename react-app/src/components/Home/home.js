@@ -20,7 +20,10 @@ const Home = () => {
   return (
     <div className="page">
       <div className="banner">
-        <h1 className="welcome">Live Hangout</h1>
+        <h1 className="welcome">
+          Connecting you to...
+          <h2>Well, pick one!</h2>
+        </h1>
       </div>
       <div className="categories">
         {catArr?.map((category, idx) => (
