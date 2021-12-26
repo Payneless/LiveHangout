@@ -33,10 +33,10 @@
   border-radius: 0.5rem;
   color: white;
   transition-duration: 0.5s;
+  cursor: pointer;
 }
 .category:hover {
   transform: scale(1.2);
-  cursor: pointer;
 }
 .popular-container {
   padding-top: 1rem;
