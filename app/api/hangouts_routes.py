@@ -68,7 +68,7 @@ def update_hangout(id):
 	else:
 		return "Hangout not found", 404
 
-@hangouts_routes.route("/<int:id", methods=["DELETE"])
+@hangouts_routes.route("/<int:id>", methods=["DELETE"])
 @login_required
 def delete_hangout(id):
 	hangout=Hangout.query.get(id)

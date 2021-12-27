@@ -17,8 +17,15 @@ const NavBar = () => {
               Home
             </NavLink>
           </div> */}
-          <LoginFormModal />
-          <SignUpFormModal />
+          <img
+            className="logo-nav"
+            src="https://cdn.discordapp.com/attachments/890713980878876682/921570471168847893/livehangoutslogo-bauhaus.png"
+            alt="logo"
+          />
+          <span className="buttons">
+            <LoginFormModal />
+            <SignUpFormModal />
+          </span>
           {/* <li>
             <NavLink to="/users" exact={true} className="active">
               Users
@@ -31,7 +38,14 @@ const NavBar = () => {
   return (
     <nav>
       <div className="nav-bar">
-        <LogoutButton />
+        <img
+          className="logo-nav"
+          src="https://cdn.discordapp.com/attachments/890713980878876682/921570471168847893/livehangoutslogo-bauhaus.png"
+          alt="logo"
+        />
+        <>
+          <LogoutButton />
+        </>
       </div>
     </nav>
   );
