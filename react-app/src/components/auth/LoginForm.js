@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { login, demoLogin } from "../../store/session";
+import "./LoginForm.css";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -63,10 +64,14 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
-        <button onClick={handleDemoLogin} className="button">
-          Demo Login
-        </button>
+        <div className="buttons">
+          <button className="button" type="submit">
+            Login
+          </button>
+          <button onClick={handleDemoLogin} className="button">
+            Demo Login
+          </button>
+        </div>
       </div>
     </form>
   );
