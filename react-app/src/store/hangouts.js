@@ -53,8 +53,15 @@ export const getAllHangouts = () => async (dispatch) => {
 export const addAHangout = (hangout) => async (dispatch) => {
   const response = await fetch("/api/hangouts/", {
     method: "POST",
-    body,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ hangout }),
   });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(add(data));
+    return data;
+  }
 };
 
 const initialState = {};
@@ -67,6 +74,9 @@ export default function hangoutsReducer(state = initialState, action) {
       hangouts.forEach((hangout) => {
         newState[hangout.id] = hangout;
       });
+      return newState;
+    case ADD_HANGOUT:
+      newState = { ...state, [action.payload.id]: action.payload };
       return newState;
     // case GET_HANGOUT:
     //   let one = action.payload;

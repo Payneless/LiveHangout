@@ -11,6 +11,7 @@ import { authenticate } from "./store/session";
 import Hangouts from "./components/hangouts/Hangouts";
 import Splash from "./components/splash/splash";
 import Home from "./components/Home/home";
+import Add from "./components/AddHangout";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,9 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
+        <ProtectedRoute path="/new" exact={true}>
+          <Add />
+        </ProtectedRoute>
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>

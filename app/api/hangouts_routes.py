@@ -23,25 +23,12 @@ def one_hangout(id):
 	else:
 		return "Hangout not found", 404
 
-@hangouts_routes.route("/", methods=["POST"])
+@hangouts_routes.route("/new", methods=["POST"])
 @login_required
 def create_hangout():
 	form = HangoutForm()
 	form['csrf_token'].data = request.cookies['csrf_token']
-	hangout=Hangout(
-		host=form.data['host'],
-		title=form.data['title'],
-		link=form.data['link'],
-		image=form.data['image'],
-		open=form.data['open'],
-		category=form.data['category'],
-		startDate=form.data['startDate'],
-		endDate=form.data['endDate'],
-		startTime=form.data['startTime'],
-		endTime=form.data['endTime'],
-		createdAt = datetime.now(),
-		updatedAt = datetime.now(),
-	)
+	hangout=Hangout(**request.json)
 	db.session.add(hangout)
 	db.session.commit()
 	return hangout.to_dict()

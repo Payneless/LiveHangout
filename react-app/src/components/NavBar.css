@@ -1,7 +1,7 @@
 .nav-bar {
   display: flex;
   justify-content: space-between;
-  align-items: ce;
+  align-items: center;
 }
 .buttons {
   display: flex;
@@ -17,7 +17,7 @@
   padding: 0.5rem;
   border-radius: 15%;
   justify-content: center;
-  align-items: center;
+  align-content: center;
   width: auto;
   height: 1rem;
 }
@@ -39,4 +39,9 @@
   height: auto;
   justify-content: space-between;
   align-content: center;
+}
+.add-button {
+  display: flex;
+  height: 2.5rem;
+  width: auto;
 }

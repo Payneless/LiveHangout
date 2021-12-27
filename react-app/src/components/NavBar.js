@@ -1,51 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import LoginFormModal from "./auth/LoginIndex";
 import LogoutButton from "./auth/LogoutButton";
 import SignUpFormModal from "./auth/SignUpIndex";
 import "./NavBar.css";
 
 const NavBar = () => {
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
-  if (!sessionUser) {
-    return (
-      <nav>
-        <div className="nav-bar">
-          {/* <div>
-            <NavLink to="/" exact={true} className="active">
-              Home
-            </NavLink>
-          </div> */}
-          <img
-            className="logo-nav"
-            src="https://cdn.discordapp.com/attachments/890713980878876682/921570471168847893/livehangoutslogo-bauhaus.png"
-            alt="logo"
-          />
-          <span className="buttons">
-            <LoginFormModal />
-            <SignUpFormModal />
-          </span>
-          {/* <li>
-            <NavLink to="/users" exact={true} className="active">
-              Users
-            </NavLink>
-          </li> */}
-        </div>
-      </nav>
-    );
-  }
+  const [adding, setAdding] = useState(false);
+  // if (!sessionUser) {
+  //   return (
+  //     <nav>
+  //       <div className="nav-bar">
+  //         <img
+  //           onClick={() => history.push("/")}
+  //           className="logo-nav"
+  //           src="https://cdn.discordapp.com/attachments/890713980878876682/921570471168847893/livehangoutslogo-bauhaus.png"
+  //           alt="logo"
+  //         />
+  //         <span className="buttons">
+  //           <LoginFormModal />
+  //           <SignUpFormModal />
+  //         </span>
+  //       </div>
+  //     </nav>
+  //   );
+  // }
   return (
     <nav>
       <div className="nav-bar">
-        <img
-          className="logo-nav"
-          src="https://cdn.discordapp.com/attachments/890713980878876682/921570471168847893/livehangoutslogo-bauhaus.png"
-          alt="logo"
-        />
-        <>
-          <LogoutButton />
-        </>
+        {sessionUser ? (
+          <>
+            <img
+              onClick={() => {
+                setAdding(false);
+                history.push("/");
+              }}
+              className="logo-nav"
+              src="https://cdn.discordapp.com/attachments/890713980878876682/921570471168847893/livehangoutslogo-bauhaus.png"
+              alt="logo"
+            />
+            <span>
+              {!adding && (
+                <img
+                  className="add-button"
+                  src="https://cdn.discordapp.com/attachments/897232495580414045/925147162654937188/JAKESPLUS.png"
+                  alt="add"
+                  onClick={() => {
+                    setAdding(true);
+                    history.push("/new");
+                  }}
+                />
+              )}
+              <LogoutButton />
+            </span>
+          </>
+        ) : (
+          <>
+            <img
+              onClick={() => history.push("/")}
+              className="logo-nav"
+              src="https://cdn.discordapp.com/attachments/890713980878876682/921570471168847893/livehangoutslogo-bauhaus.png"
+              alt="logo"
+            />
+            <span className="buttons">
+              <LoginFormModal />
+              <SignUpFormModal />
+            </span>
+          </>
+        )}
       </div>
     </nav>
   );
