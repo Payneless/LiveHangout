@@ -1,0 +1,14 @@
+.sign-up-button {
+  display: flex;
+  background-color: rgb(218, 159, 147);
+  padding: 0.5rem;
+  border-radius: 15%;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 2rem;
+  border: none;
+  margin: 1rem;
+  margin-left: 7rem;
+  color: white;
+}

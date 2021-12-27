@@ -1,6 +1,8 @@
 //action types
 const GET_HANGOUTS = "hangouts/GET_HANGOUTS";
 // const GET_HANGOUT = "hangouts/GET_HANGOUT";
+const ADD_HANGOUT = "hangouts/ADD_HANGOUT";
+const UPDATE_HANGOUT = "hangouts/UPDATE_HANGOUT";
 
 //action creators
 const get = (payload) => {
@@ -16,6 +18,19 @@ const get = (payload) => {
 //     payload: [payload],
 //   };
 // };
+const add = (payload) => {
+  return {
+    type: ADD_HANGOUT,
+    payload,
+  };
+};
+
+const update = (payload) => {
+  return {
+    type: UPDATE_HANGOUT,
+    payload,
+  };
+};
 
 export const getAllHangouts = () => async (dispatch) => {
   const response = await fetch("/api/hangouts/");
@@ -34,6 +49,13 @@ export const getAllHangouts = () => async (dispatch) => {
 //     dispatch(getOne(hangout));
 //   }
 // };
+
+export const addAHangout = (hangout) => async (dispatch) => {
+  const response = await fetch("/api/hangouts/", {
+    method: "POST",
+    body,
+  });
+};
 
 const initialState = {};
 
