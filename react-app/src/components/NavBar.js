@@ -9,7 +9,6 @@ import "./NavBar.css";
 const NavBar = () => {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
-  const [adding, setAdding] = useState(false);
   // if (!sessionUser) {
   //   return (
   //     <nav>
@@ -35,7 +34,6 @@ const NavBar = () => {
           <>
             <img
               onClick={() => {
-                setAdding(false);
                 history.push("/");
               }}
               className="logo-nav"
@@ -48,7 +46,7 @@ const NavBar = () => {
                 src="https://cdn.discordapp.com/attachments/897232495580414045/925147162654937188/JAKESPLUS.png"
                 alt="add"
                 onClick={() => {
-                  history.push("/");
+                  history.push("/new");
                 }}
               />
 

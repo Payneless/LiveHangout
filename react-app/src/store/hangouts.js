@@ -1,8 +1,9 @@
 //action types
 const GET_HANGOUTS = "hangouts/GET_HANGOUTS";
-// const GET_HANGOUT = "hangouts/GET_HANGOUT";
+const GET_HANGOUT = "hangouts/GET_HANGOUT";
 const ADD_HANGOUT = "hangouts/ADD_HANGOUT";
 const UPDATE_HANGOUT = "hangouts/UPDATE_HANGOUT";
+const REMOVE_HANGOUT = "hangouts/REMOVE_HANGOUT";
 
 //action creators
 const get = (payload) => {
@@ -12,12 +13,12 @@ const get = (payload) => {
   };
 };
 
-// const getOne = (payload) => {
-//   return {
-//     type: GET_HANGOUT,
-//     payload: [payload],
-//   };
-// };
+const getOne = (payload) => {
+  return {
+    type: GET_HANGOUT,
+    payload,
+  };
+};
 const add = (payload) => {
   return {
     type: ADD_HANGOUT,
@@ -32,6 +33,13 @@ const update = (payload) => {
   };
 };
 
+const remove = (payload) => {
+  return {
+    type: REMOVE_HANGOUT,
+    payload,
+  };
+};
+
 export const getAllHangouts = () => async (dispatch) => {
   const response = await fetch("/api/hangouts/");
 
@@ -41,14 +49,14 @@ export const getAllHangouts = () => async (dispatch) => {
   }
 };
 
-// export const getOneHangout = (id) => async (dispatch) => {
-//   const response = await fetch(`/api/hangouts/${id}`);
+export const getOneHangout = (id) => async (dispatch) => {
+  const response = await fetch(`/api/hangouts/${id}`);
 
-//   if (response.ok) {
-//     const hangout = await response.json();
-//     dispatch(getOne(hangout));
-//   }
-// };
+  if (response.ok) {
+    const hangout = await response.json();
+    dispatch(getOne(hangout));
+  }
+};
 
 export const addAHangout = (hangout) => async (dispatch) => {
   const response = await fetch("/api/hangouts/new", {
@@ -64,8 +72,8 @@ export const addAHangout = (hangout) => async (dispatch) => {
   }
 };
 
-export const editAHangout = (hangout) => async (dispatch) => {
-  const response = await fetch(`/api/hangouts/${hangout.id}`, {
+export const editAHangout = (hangoutId, hangout) => async (dispatch) => {
+  const response = await fetch(`/api/hangouts/${hangoutId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(hangout),
@@ -75,6 +83,16 @@ export const editAHangout = (hangout) => async (dispatch) => {
     const data = await response.json();
     dispatch(update(data));
     return data;
+  }
+};
+
+export const deleteHangout = (hangoutId) => async (dispatch) => {
+  const response = await fetch(`/api/ahngouts/${hangoutId}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    dispatch(remove(hangoutId));
   }
 };
 
@@ -94,11 +112,10 @@ export default function hangoutsReducer(state = initialState, action) {
       return newState;
     case UPDATE_HANGOUT:
       return { ...state, [action.payload.id]: action.payload };
-    // case GET_HANGOUT:
-    //   let one = action.payload;
-    //   console.log("reducah", one);
-    //   newState = { ...state, [one.id]: one };
-    //   return newState;
+    case GET_HANGOUT:
+      let one = action.payload;
+      newState = { [one.id]: one };
+      return newState;
     default:
       return state;
   }

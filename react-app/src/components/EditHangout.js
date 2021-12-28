@@ -2,27 +2,29 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editAHangout } from "../store/hangouts";
-import { getAllHangouts } from "../store/hangouts";
+import { getOneHangout } from "../store/hangouts";
 
 const Edit = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { hangoutId } = useParams();
-  const hangout = useSelector(
-    (state) => state.session.user.hangouts[hangoutId]
-  );
+  const hangout = useSelector((state) => state.hangouts[hangoutId]);
   const host = useSelector((state) => state.session.user);
-  const [title, setTitle] = useState(hangout.title);
-  const [link, setLink] = useState(hangout.link);
-  const [image, setImage] = useState(hangout.image);
-  const [open, setOpen] = useState(hangout.open.toString());
-  const [category, setCategory] = useState(hangout.category);
-  const [startDate, setStartDate] = useState(hangout.startDate);
-  const [endDate, setEndDate] = useState(hangout.endDate);
-  const [startTime, setStartTime] = useState(hangout.startTime);
-  const [endTime, setEndTime] = useState(hangout.endTime);
-  const [description, setDescription] = useState(hangout.description);
+  const [title, setTitle] = useState(hangout?.title);
+  const [link, setLink] = useState(hangout?.link);
+  const [image, setImage] = useState(hangout?.image);
+  const [open, setOpen] = useState(hangout?.open.toString());
+  const [category, setCategory] = useState(hangout?.category);
+  const [startDate, setStartDate] = useState(hangout?.startDate);
+  const [endDate, setEndDate] = useState(hangout?.endDate);
+  const [startTime, setStartTime] = useState(hangout?.startTime);
+  const [endTime, setEndTime] = useState(hangout?.endTime);
+  const [description, setDescription] = useState(hangout?.description);
   const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    dispatch(getOneHangout(hangoutId));
+  }, [dispatch]);
 
   const handleSubmitEdit = async (e) => {
     e.preventDefault();
@@ -38,7 +40,7 @@ const Edit = () => {
       endTime,
       description,
     };
-    await dispatch(editAHangout(payload)).catch(async (res) => {
+    await dispatch(editAHangout(hangoutId, payload)).catch(async (res) => {
       const hangoutData = await res.json();
       if (hangoutData && hangoutData.errors) setErrors(hangoutData.errors);
     });

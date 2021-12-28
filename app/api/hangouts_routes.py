@@ -17,7 +17,6 @@ def hangouts():
 @hangouts_routes.route('/<int:id>')
 def one_hangout(id):
 	hangout = Hangout.query.get(id)
-	print("LOL", hangout)
 	if hangout:
 		return hangout.to_dict()
 	else:
@@ -28,7 +27,6 @@ def one_hangout(id):
 def create_hangout():
 	form = HangoutForm()
 	form['csrf_token'].data = request.cookies['csrf_token']
-	print("is it open?", form.data['open'])
 	new_hangout = Hangout(
 		host=form.data['host'],
 		title=form.data['title'],
@@ -42,7 +40,6 @@ def create_hangout():
 		endTime= form.data['endTime'],
 		description= form.data['description'],
 	)
-	print("open", new_hangout.open)
 	db.session.add(new_hangout)
 	db.session.commit()
 	return new_hangout.to_dict()
@@ -53,16 +50,17 @@ def create_hangout():
 def update_hangout(id):
 	hangout = Hangout.query.get(id)
 	req = request.get_json()
+	value = True if req['open'] == 'true' else False
 	if hangout:
-		hangout.title = req.title or hangout.title
-		hangout.link = req.link or hangout.link
-		hangout.image = req.image or hangout.image
-		hangout.open = req.open or hangout.open
-		hangout.category = req.category or hangout.category
-		hangout.startDate = req.startDate or hangout.startDate
-		hangout.endDate = req.endDate or hangout.endDate
-		hangout.startTime = req.startTime or hangout.startTime
-		hangout.endTime = req.endTime or hangout.endTime
+		hangout.title = req['title'] or hangout.title
+		hangout.link = req['link'] or hangout.link
+		hangout.image = req['image'] or hangout.image
+		hangout.open = value or hangout.open
+		hangout.category = req['category'] or hangout.category
+		hangout.startDate = req['startDate'] or hangout.startDate
+		hangout.endDate = req['endDate'] or hangout.endDate
+		hangout.startTime = req['startTime'] or hangout.startTime
+		hangout.endTime = req['endTime'] or hangout.endTime
 		hangout.updatedAt = datetime.now()
 		db.session.commit()
 		return hangout.to_dict()
