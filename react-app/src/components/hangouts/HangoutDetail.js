@@ -5,9 +5,10 @@ import "./Hangouts.css";
 
 const HangoutDetail = ({ hangoutId }) => {
   const hangout = useSelector((state) => state.hangouts[hangoutId]);
-  console.log("hangout", hangout);
+  const sessionUser = useSelector((state) => state.session.user);
   return (
     <div className="hangout-detail">
+      {sessionUser.id === hangout.host}
       <img src={hangout.image} className="image" />
       <div>{hangout.title}</div>
       <div>{hangout.host}</div>

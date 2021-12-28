@@ -14,3 +14,4 @@ class HangoutForm(FlaskForm):
 	endDate=DateField("endDate", validators=[DataRequired()])
 	startTime=TimeField("startTime", validators=[DataRequired()])
 	endTime=TimeField("endTime", validators=[DataRequired()])
+	description=StringField("description", validators=[DataRequired()])

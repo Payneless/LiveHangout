@@ -1,22 +1,27 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { addAHangout } from "../store/hangouts";
 
 const Add = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const host = useSelector((state) => state.session.user);
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [image, setImage] = useState("");
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(null);
   const [category, setCategory] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const [description, setDescription] = useState("");
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("1", host.id);
     const payload = {
       host: host.id,
       title,
@@ -28,12 +33,11 @@ const Add = () => {
       endDate,
       startTime,
       endTime,
+      description,
     };
-    let errs;
-    await dispatchEvent(addAHangout(payload)).catch(async (res) => {
+    await dispatch(addAHangout(payload)).catch(async (res) => {
       const hangoutData = await res.json();
       if (hangoutData && hangoutData.errors) setErrors(hangoutData.errors);
-      errs = hangoutData.errors;
     });
   };
 
@@ -67,7 +71,8 @@ const Add = () => {
           <input type="radio" value="true" name="open" /> Open
           <input type="radio" value="false" name="open" /> Not Open
         </div>
-        <select>
+        <select onChange={(e) => setCategory(e.target.value)}>
+          <option value="disabled">Category</option>
           <option value="Chill">Chill</option>
           <option value="Watch Party">Watch Party</option>
           <option value="Concert">Concert</option>
@@ -102,6 +107,13 @@ const Add = () => {
           placeholder="time"
         />
         End Time
+        <textarea
+          type="text"
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+          placeholder="Description"
+        />
+        Tell us about your event!
         <button className="submit-button" type="submit">
           Create
         </button>

@@ -4,7 +4,7 @@ import "./Hangouts.css";
 import HangoutDetail from "./HangoutDetail";
 
 function Hangouts({ hangouts }) {
-  const top5 = hangouts.slice(0, 6);
+  const top5 = hangouts.slice(0, 5);
   const [showModal, setShowModal] = useState(false);
   const [hangout, setHangout] = useState("");
 

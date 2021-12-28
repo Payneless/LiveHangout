@@ -51,10 +51,10 @@ export const getAllHangouts = () => async (dispatch) => {
 // };
 
 export const addAHangout = (hangout) => async (dispatch) => {
-  const response = await fetch("/api/hangouts/", {
+  const response = await fetch("/api/hangouts/new", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ hangout }),
+    body: JSON.stringify(hangout),
   });
 
   if (response.ok) {

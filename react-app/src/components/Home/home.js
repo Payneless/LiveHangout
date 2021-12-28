@@ -22,7 +22,7 @@ const Home = () => {
       <div className="banner">
         <h1 className="welcome">
           Connecting you to...
-          <h2>Well, pick one!</h2>
+          <p>Well, pick one!</p>
         </h1>
       </div>
       <div className="categories">
@@ -53,12 +53,14 @@ const Home = () => {
       </div>
       <div className="random-container">
         {" "}
-        Other Hangouts
+        New Hangouts
         <Hangouts
           hangouts={
             selected
-              ? hangouts.filter((hangout) => hangout.category == selected)
-              : hangouts
+              ? hangouts
+                  .filter((hangout) => hangout.category == selected)
+                  .reverse()
+              : hangouts.reverse()
           }
         />
       </div>

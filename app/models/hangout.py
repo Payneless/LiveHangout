@@ -10,7 +10,7 @@ class Hangout(db.Model):
 	link=db.Column(db.String, nullable=False)
 	image=db.Column(db.String)
 	description=db.Column(db.String, nullable=False)
-	open=db.Column(db.Boolean, nullable=False, default=False)
+	open=db.Column(db.Boolean, nullable=False)
 	category=db.Column(db.String, nullable=False)
 	startDate=db.Column(db.Date, nullable=False)
 	endDate=db.Column(db.Date, nullable=False)

@@ -28,10 +28,23 @@ def one_hangout(id):
 def create_hangout():
 	form = HangoutForm()
 	form['csrf_token'].data = request.cookies['csrf_token']
-	hangout=Hangout(**request.json)
-	db.session.add(hangout)
+	print("is it open?", form.data['open'])
+	new_hangout = Hangout(
+		host=form.data['host'],
+		title=form.data['title'],
+		link=form.data['link'],
+		image=form.data['image'],
+		open= True if (form.data['open'] == 'True') else False,
+		category= form.data['category'],
+		startDate= form.data['startDate'],
+		endDate= form.data['endDate'],
+		startTime= form.data['startTime'],
+		endTime= form.data['endTime'],
+		description= form.data['description'],
+	)
+	db.session.add(new_hangout)
 	db.session.commit()
-	return hangout.to_dict()
+	return new_hangout.to_dict()
 
 
 @hangouts_routes.route("/<int:id>", methods=["PUT"])
