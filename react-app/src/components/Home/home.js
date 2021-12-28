@@ -20,7 +20,10 @@ const Home = () => {
   return (
     <div className="page">
       <div className="banner">
-        <h1 className="welcome">Live Hangout</h1>
+        <h1 className="welcome">
+          Connecting you to...
+          <p>Well, pick one!</p>
+        </h1>
       </div>
       <div className="categories">
         {catArr?.map((category, idx) => (
@@ -50,12 +53,14 @@ const Home = () => {
       </div>
       <div className="random-container">
         {" "}
-        Other Hangouts
+        New Hangouts
         <Hangouts
           hangouts={
             selected
-              ? hangouts.filter((hangout) => hangout.category == selected)
-              : hangouts
+              ? hangouts
+                  .filter((hangout) => hangout.category == selected)
+                  .reverse()
+              : hangouts.reverse()
           }
         />
       </div>

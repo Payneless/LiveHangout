@@ -44,7 +44,11 @@ const Splash = () => {
       </div>
       <div className="splash-welcome">
         <h1 className="welcome-message">Welcome to</h1>
-        <h1 className="welcome-message">Live Hangout</h1>
+        <img
+          className="logo"
+          src="https://cdn.discordapp.com/attachments/890713980878876682/921570471168847893/livehangoutslogo-bauhaus.png"
+          alt="logo"
+        />
         {sessionUser !== null && (
           <h1 className="welcome-message">{sessionUser.fName}!</h1>
         )}

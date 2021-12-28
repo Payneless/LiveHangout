@@ -1,0 +1,26 @@
+.login-form {
+  height: 11rem;
+  width: 18rem;
+  display: flex;
+  flex-direction: column;
+}
+.input {
+  margin: 1rem;
+}
+.login-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-form button {
+  display: flex;
+  background-color: rgb(218, 159, 147);
+  padding: 0.5rem;
+  border-radius: 15%;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 2rem;
+  border: none;
+  margin: 1rem;
+}
