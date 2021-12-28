@@ -1,29 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { addAHangout } from "../store/hangouts";
+import { useHistory, useParams } from "react-router-dom";
+import { editAHangout } from "../store/hangouts";
+import { getAllHangouts } from "../store/hangouts";
 
-const Add = () => {
+const Edit = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { hangoutId } = useParams();
+  const hangout = useSelector(
+    (state) => state.session.user.hangouts[hangoutId]
+  );
   const host = useSelector((state) => state.session.user);
-  const [title, setTitle] = useState("");
-  const [link, setLink] = useState("");
-  const [image, setImage] = useState("");
-  const [open, setOpen] = useState(null);
-  const [category, setCategory] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [endTime, setEndTime] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState(hangout.title);
+  const [link, setLink] = useState(hangout.link);
+  const [image, setImage] = useState(hangout.image);
+  const [open, setOpen] = useState(hangout.open.toString());
+  const [category, setCategory] = useState(hangout.category);
+  const [startDate, setStartDate] = useState(hangout.startDate);
+  const [endDate, setEndDate] = useState(hangout.endDate);
+  const [startTime, setStartTime] = useState(hangout.startTime);
+  const [endTime, setEndTime] = useState(hangout.endTime);
+  const [description, setDescription] = useState(hangout.description);
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmitEdit = async (e) => {
     e.preventDefault();
-    console.log("1", host.id);
     const payload = {
-      host: host.id,
       title,
       link,
       image,
@@ -35,16 +38,16 @@ const Add = () => {
       endTime,
       description,
     };
-    await dispatch(addAHangout(payload)).catch(async (res) => {
+    await dispatch(editAHangout(payload)).catch(async (res) => {
       const hangoutData = await res.json();
       if (hangoutData && hangoutData.errors) setErrors(hangoutData.errors);
     });
-    history.push("/new");
+    history.push("/home");
   };
 
   return (
     <div className="new-hangout-form">
-      <form onSubmit={handleSubmit} className="hangout-form">
+      <form onSubmit={handleSubmitEdit} className="hangout-form">
         <ul className="errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -72,8 +75,7 @@ const Add = () => {
           <input type="radio" value="true" name="open" /> Open
           <input type="radio" value="false" name="open" /> Not Open
         </div>
-        <select onChange={(e) => setCategory(e.target.value)}>
-          <option value="disabled">Category</option>
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="Chill">Chill</option>
           <option value="Watch Party">Watch Party</option>
           <option value="Concert">Concert</option>
@@ -114,13 +116,13 @@ const Add = () => {
           value={description}
           placeholder="Description"
         />
-        Tell us about your hangout!
+        Edit the Description!
         <button className="submit-button" type="submit">
-          Create
+          Edit
         </button>
       </form>
     </div>
   );
 };
 
-export default Add;
+export default Edit;

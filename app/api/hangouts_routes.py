@@ -34,7 +34,7 @@ def create_hangout():
 		title=form.data['title'],
 		link=form.data['link'],
 		image=form.data['image'],
-		open= True if (form.data['open'] == 'True') else False,
+		open= form.data['open'],
 		category= form.data['category'],
 		startDate= form.data['startDate'],
 		endDate= form.data['endDate'],
@@ -42,6 +42,7 @@ def create_hangout():
 		endTime= form.data['endTime'],
 		description= form.data['description'],
 	)
+	print("open", new_hangout.open)
 	db.session.add(new_hangout)
 	db.session.commit()
 	return new_hangout.to_dict()

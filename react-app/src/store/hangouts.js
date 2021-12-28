@@ -64,6 +64,20 @@ export const addAHangout = (hangout) => async (dispatch) => {
   }
 };
 
+export const editAHangout = (hangout) => async (dispatch) => {
+  const response = await fetch(`/api/hangouts/${hangout.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(hangout),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(update(data));
+    return data;
+  }
+};
+
 const initialState = {};
 
 export default function hangoutsReducer(state = initialState, action) {
@@ -78,6 +92,8 @@ export default function hangoutsReducer(state = initialState, action) {
     case ADD_HANGOUT:
       newState = { ...state, [action.payload.id]: action.payload };
       return newState;
+    case UPDATE_HANGOUT:
+      return { ...state, [action.payload.id]: action.payload };
     // case GET_HANGOUT:
     //   let one = action.payload;
     //   console.log("reducah", one);

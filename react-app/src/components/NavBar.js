@@ -43,17 +43,15 @@ const NavBar = () => {
               alt="logo"
             />
             <span>
-              {!adding && (
-                <img
-                  className="add-button"
-                  src="https://cdn.discordapp.com/attachments/897232495580414045/925147162654937188/JAKESPLUS.png"
-                  alt="add"
-                  onClick={() => {
-                    setAdding(true);
-                    history.push("/new");
-                  }}
-                />
-              )}
+              <img
+                className="add-button"
+                src="https://cdn.discordapp.com/attachments/897232495580414045/925147162654937188/JAKESPLUS.png"
+                alt="add"
+                onClick={() => {
+                  history.push("/");
+                }}
+              />
+
               <LogoutButton />
             </span>
           </>

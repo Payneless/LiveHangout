@@ -30,6 +30,7 @@ class Hangout(db.Model):
 		return {
 			"id": self.id,
 			"host": self.user.fName,
+			"hostId": self.user.id,
 			"title": self.title,
 			"link": self.link,
 			"image": self.image,

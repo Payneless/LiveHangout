@@ -32,8 +32,12 @@
 .hangout-detail {
   display: flex;
   flex-direction: column;
-  width: 70rem;
-  height: 70rem;
+  width: 60rem;
+  height: auto;
   margin: 2rem;
+}
+.image {
+  display: flex;
+  max-height: 30rem;
 }
 /* add drop shadow, hover effect, and spacing between */
