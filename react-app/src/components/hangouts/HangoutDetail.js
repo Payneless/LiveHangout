@@ -69,49 +69,53 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
           </div>
         </div>
       )}
-      <img src={hangout.image} className="image" />
       <div className="main-info">
-        <div>{hangout.title}</div>
-        <div>{hangout.host}</div>
-        {hangout.open == true ? (
-          <>
-            <div>RSVPs: {hangout.rsvps.length}</div>
-            {notRsvpd ? (
-              <button
-                className="detail-add-remove"
-                onClick={() => RSVPadd(hangoutId, sessionUser.id)}
-              >
-                RSVP
-              </button>
-            ) : (
-              <button
-                className="detail-add-remove"
-                onClick={() => RSVPdelete(hangoutId, sessionUser.id)}
-              >
-                Cancel
-              </button>
-            )}
-          </>
-        ) : (
-          <>
-            <div>Bookmarks: {hangout.bookmarks.length}</div>
-            {!bookmarked ? (
-              <button
-                className="detail-add-remove"
-                onClick={() => BookmarkAdd(hangoutId, sessionUser.id)}
-              >
-                Bookmark
-              </button>
-            ) : (
-              <button
-                className="detail-add-remove"
-                onClick={() => BookmarkDelete(hangoutId, sessionUser.id)}
-              >
-                Remove
-              </button>
-            )}
-          </>
-        )}
+        <img src={hangout.image} className="image" />
+        <div className="main-info2">
+          <div className="detail-title">{hangout.title}</div>
+          <div className="detail-host">Host: {hangout.host}</div>
+          {hangout.open == true ? (
+            <>
+              <div className="detail-rsvps">RSVPs: {hangout.rsvps.length}</div>
+              {notRsvpd ? (
+                <button
+                  className="detail-add-remove"
+                  onClick={() => RSVPadd(hangoutId, sessionUser.id)}
+                >
+                  RSVP
+                </button>
+              ) : (
+                <button
+                  className="detail-add-remove"
+                  onClick={() => RSVPdelete(hangoutId, sessionUser.id)}
+                >
+                  Cancel
+                </button>
+              )}
+            </>
+          ) : (
+            <>
+              <div className="detail-bookmarks">
+                Bookmarks: {hangout.bookmarks.length}
+              </div>
+              {!bookmarked ? (
+                <button
+                  className="detail-add-remove"
+                  onClick={() => BookmarkAdd(hangoutId, sessionUser.id)}
+                >
+                  Bookmark
+                </button>
+              ) : (
+                <button
+                  className="detail-add-remove"
+                  onClick={() => BookmarkDelete(hangoutId, sessionUser.id)}
+                >
+                  Remove
+                </button>
+              )}
+            </>
+          )}
+        </div>
       </div>
       <div className="description-box">
         <div className="description">{hangout.description}</div>
