@@ -4,6 +4,8 @@ const GET_HANGOUT = "hangouts/GET_HANGOUT";
 const ADD_HANGOUT = "hangouts/ADD_HANGOUT";
 const UPDATE_HANGOUT = "hangouts/UPDATE_HANGOUT";
 const REMOVE_HANGOUT = "hangouts/REMOVE_HANGOUT";
+const ADD_RSVP = "hangouts/ADD_RSVP";
+const DELETE_RSVP = "hangouts/DELETE_RSVP";
 
 //action creators
 const get = (payload) => {
@@ -37,6 +39,20 @@ const remove = (payload) => {
   return {
     type: REMOVE_HANGOUT,
     payload,
+  };
+};
+
+const addRSVP = (payload) => {
+  return {
+    type: ADD_RSVP,
+    payload,
+  };
+};
+
+const deleteRSVP = (hangoutId, userId) => {
+  return {
+    type: DELETE_RSVP,
+    payload: [hangoutId, userId],
   };
 };
 
@@ -87,12 +103,34 @@ export const editAHangout = (hangoutId, hangout) => async (dispatch) => {
 };
 
 export const deleteHangout = (hangoutId) => async (dispatch) => {
-  const response = await fetch(`/api/ahngouts/${hangoutId}`, {
+  const response = await fetch(`/api/hangouts/${hangoutId}`, {
     method: "DELETE",
   });
 
   if (response.ok) {
     dispatch(remove(hangoutId));
+  }
+};
+
+export const AddRsvp = (hangoutId, userId) => async (dispatch) => {
+  const response = await fetch(`/api/hangouts/${hangoutId}/rsvp`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userId),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(addRSVP(data));
+    return data;
+  }
+};
+
+export const DeleteRsvp = (hangoutId, userId) => async (dispatch) => {
+  const response = await fetch(`/api/hangouts/${hangoutId}/rsvp/${userId}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    dispatch(deleteRSVP(hangoutId, userId));
   }
 };
 
@@ -115,6 +153,21 @@ export default function hangoutsReducer(state = initialState, action) {
     case GET_HANGOUT:
       let one = action.payload;
       newState = { [one.id]: one };
+      return newState;
+    case REMOVE_HANGOUT:
+      newState = { ...state };
+      delete newState[action.payload];
+      return newState;
+    case ADD_RSVP:
+      newState = { ...state };
+      newState[action.payload.hangout].rsvps.push(action.payload);
+      return newState;
+    case DELETE_RSVP:
+      newState = { ...state };
+      const idx = newState[action.payload[0]].rsvps.findIndex(
+        (rsvp) => rsvp.user === action.payload[1]
+      );
+      newState[action.payload[0]].rsvps.splice(idx, 1);
       return newState;
     default:
       return state;

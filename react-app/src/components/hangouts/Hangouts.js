@@ -50,7 +50,7 @@ function Hangouts({ hangouts }) {
       )}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <HangoutDetail hangoutId={hangout} />
+          <HangoutDetail hangoutId={hangout} setShowModal={setShowModal} />
         </Modal>
       )}
     </div>
