@@ -77,11 +77,17 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
           <>
             <div>RSVPs: {hangout.rsvps.length}</div>
             {notRsvpd ? (
-              <button onClick={() => RSVPadd(hangoutId, sessionUser.id)}>
+              <button
+                className="detail-add-remove"
+                onClick={() => RSVPadd(hangoutId, sessionUser.id)}
+              >
                 RSVP
               </button>
             ) : (
-              <button onClick={() => RSVPdelete(hangoutId, sessionUser.id)}>
+              <button
+                className="detail-add-remove"
+                onClick={() => RSVPdelete(hangoutId, sessionUser.id)}
+              >
                 Cancel
               </button>
             )}
@@ -90,11 +96,17 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
           <>
             <div>Bookmarks: {hangout.bookmarks.length}</div>
             {!bookmarked ? (
-              <button onClick={() => BookmarkAdd(hangoutId, sessionUser.id)}>
+              <button
+                className="detail-add-remove"
+                onClick={() => BookmarkAdd(hangoutId, sessionUser.id)}
+              >
                 Bookmark
               </button>
             ) : (
-              <button onClick={() => BookmarkDelete(hangoutId, sessionUser.id)}>
+              <button
+                className="detail-add-remove"
+                onClick={() => BookmarkDelete(hangoutId, sessionUser.id)}
+              >
                 Remove
               </button>
             )}
