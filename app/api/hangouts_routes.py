@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import Hangout, db, RSVP
+from app.models import Hangout, db, RSVP, Bookmark
 from app.forms.hangout_form import HangoutForm
 from datetime import datetime
 
@@ -97,6 +97,29 @@ def delete_rsvp(hid, uid):
 	number = rsvp.id
 	if rsvp:
 		db.session.delete(rsvp)
+		db.session.commit()
+		return "RSVP deleted", 200
+	else:
+		return "RSVP not found", 404
+
+@hangouts_routes.route("/<int:hid>/bookmarks", methods=["POST"])
+@login_required
+def add_bookmark(hid):
+	req = request.get_json()
+	new_bookmark = Bookmark(
+		userId=req,
+		hangoutId=hid,
+	)
+	db.session.add(new_bookmark)
+	db.session.commit()
+	return new_bookmark.to_dict()
+
+@hangouts_routes.route("/<int:hid>/bookmarks/<int:uid>", methods=["DELETE"])
+@login_required
+def delete_bookmark(hid, uid):
+	bookmark=Bookmark.query.filter(Bookmark.hangoutId == hid, Bookmark.userId == uid).first()
+	if bookmark:
+		db.session.delete(bookmark)
 		db.session.commit()
 		return "RSVP deleted", 200
 	else:

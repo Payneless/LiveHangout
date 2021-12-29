@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { AddRsvp, deleteHangout, DeleteRsvp } from "../../store/hangouts";
+import {
+  AddBookmark,
+  AddRsvp,
+  deleteBookmark,
+  deleteHangout,
+  DeleteRsvp,
+} from "../../store/hangouts";
 import "./Hangouts.css";
 
 const HangoutDetail = ({ hangoutId, setShowModal }) => {
@@ -9,6 +15,7 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
   const history = useHistory();
   const hangout = useSelector((state) => state.hangouts[hangoutId]);
   const [notRsvpd, setNotRsvpd] = useState(true);
+  const [bookmarked, setBookmarked] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);
   console.log("open", hangout.open);
 
@@ -19,6 +26,14 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
   const RSVPdelete = async (hangoutId, userId) => {
     dispatch(DeleteRsvp(hangoutId, userId));
     setNotRsvpd(true);
+  };
+  const BookmarkAdd = async (hangoutId, userId) => {
+    dispatch(AddBookmark(hangoutId, userId));
+    setBookmarked(true);
+  };
+  const BookmarkDelete = async (hangoutId, userId) => {
+    dispatch(deleteBookmark(hangoutId, userId));
+    setBookmarked(false);
   };
   const handleDelete = async (hangoutId) => {
     dispatch(deleteHangout(hangoutId));
@@ -72,7 +87,18 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
             )}
           </>
         ) : (
-          <div>Bookmarks: {hangout.bookmarks.length}</div>
+          <>
+            <div>Bookmarks: {hangout.bookmarks.length}</div>
+            {!bookmarked ? (
+              <button onClick={() => BookmarkAdd(hangoutId, sessionUser.id)}>
+                Bookmark
+              </button>
+            ) : (
+              <button onClick={() => BookmarkDelete(hangoutId, sessionUser.id)}>
+                Remove
+              </button>
+            )}
+          </>
         )}
       </div>
       <div className="description-box">

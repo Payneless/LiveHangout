@@ -6,6 +6,8 @@ const UPDATE_HANGOUT = "hangouts/UPDATE_HANGOUT";
 const REMOVE_HANGOUT = "hangouts/REMOVE_HANGOUT";
 const ADD_RSVP = "hangouts/ADD_RSVP";
 const DELETE_RSVP = "hangouts/DELETE_RSVP";
+const ADD_BOOKMARK = "hangouts/ADD_BOOKMARK";
+const DELETE_BOOKMARK = "hangouts/DELETE_BOOKMARK";
 
 //action creators
 const get = (payload) => {
@@ -52,6 +54,20 @@ const addRSVP = (payload) => {
 const deleteRSVP = (hangoutId, userId) => {
   return {
     type: DELETE_RSVP,
+    payload: [hangoutId, userId],
+  };
+};
+
+const addBookmark = (payload) => {
+  return {
+    type: ADD_BOOKMARK,
+    payload,
+  };
+};
+
+const deleteBOOKMARK = (hangoutId, userId) => {
+  return {
+    type: DELETE_BOOKMARK,
     payload: [hangoutId, userId],
   };
 };
@@ -134,6 +150,31 @@ export const DeleteRsvp = (hangoutId, userId) => async (dispatch) => {
   }
 };
 
+export const AddBookmark = (hangoutId, userId) => async (dispatch) => {
+  const response = await fetch(`/api/hangouts/${hangoutId}/bookmarks`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userId),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(addBookmark(data));
+    return data;
+  }
+};
+
+export const deleteBookmark = (hangoutId, userId) => async (dispatch) => {
+  const response = await fetch(
+    `/api/hangouts/${hangoutId}/bookmarks/${userId}`,
+    {
+      method: "DELETE",
+    }
+  );
+  if (response.ok) {
+    dispatch(deleteBOOKMARK(hangoutId, userId));
+  }
+};
+
 const initialState = {};
 
 export default function hangoutsReducer(state = initialState, action) {
@@ -168,6 +209,17 @@ export default function hangoutsReducer(state = initialState, action) {
         (rsvp) => rsvp.user === action.payload[1]
       );
       newState[action.payload[0]].rsvps.splice(idx, 1);
+      return newState;
+    case ADD_BOOKMARK:
+      newState = { ...state };
+      newState[action.payload.hangout].bookmarks.push(action.payload);
+      return newState;
+    case DELETE_BOOKMARK:
+      newState = { ...state };
+      const index = newState[action.payload[0]].bookmarks.findIndex(
+        (bookmark) => bookmark.user === action.payload[1]
+      );
+      newState[action.payload[0]].bookmarks.splice(index, 1);
       return newState;
     default:
       return state;
