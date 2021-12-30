@@ -32,7 +32,7 @@ function Hangouts({ hangouts }) {
           <div key={id} className="hangout" onClick={() => displayHangout(id)}>
             <img src={image} className="photo" alt="hangout_photo"></img>
             <div className="info">
-              <span>{title}</span>
+              <span className="title">{title}</span>
               <span>Hosted by: {host}</span>
               <span>Open for RSVP: {open.toString()}</span>
               {open && <span>RSVPs: {rsvps.length}</span>}

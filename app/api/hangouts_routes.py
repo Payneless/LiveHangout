@@ -7,6 +7,16 @@ from datetime import datetime
 hangouts_routes = Blueprint('hangouts', __name__)
 
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 @hangouts_routes.route('/')
 # @login_required
 def hangouts():
@@ -27,22 +37,24 @@ def one_hangout(id):
 def create_hangout():
 	form = HangoutForm()
 	form['csrf_token'].data = request.cookies['csrf_token']
-	new_hangout = Hangout(
-		host=form.data['host'],
-		title=form.data['title'],
-		link=form.data['link'],
-		image=form.data['image'],
-		open= form.data['open'],
-		category= form.data['category'],
-		startDate= form.data['startDate'],
-		endDate= form.data['endDate'],
-		startTime= form.data['startTime'],
-		endTime= form.data['endTime'],
-		description= form.data['description'],
-	)
-	db.session.add(new_hangout)
-	db.session.commit()
-	return new_hangout.to_dict()
+	if form.validate_on_submit():
+		new_hangout = Hangout(
+			host=form.data['host'],
+			title=form.data['title'],
+			link=form.data['link'],
+			image=form.data['image'],
+			open= form.data['open'],
+			category= form.data['category'],
+			startDate= form.data['startDate'],
+			endDate= form.data['endDate'],
+			startTime= form.data['startTime'],
+			endTime= form.data['endTime'],
+			description= form.data['description'],
+		)
+		db.session.add(new_hangout)
+		db.session.commit()
+		return new_hangout.to_dict()
+	return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @hangouts_routes.route("/<int:id>", methods=["PUT"])
@@ -52,15 +64,16 @@ def update_hangout(id):
 	req = request.get_json()
 	value = True if req['open'] == 'true' else False
 	if hangout:
-		hangout.title = req['title'] or hangout.title
-		hangout.link = req['link'] or hangout.link
-		hangout.image = req['image'] or hangout.image
-		hangout.open = value or hangout.open
-		hangout.category = req['category'] or hangout.category
-		hangout.startDate = req['startDate'] or hangout.startDate
-		hangout.endDate = req['endDate'] or hangout.endDate
-		hangout.startTime = req['startTime'] or hangout.startTime
-		hangout.endTime = req['endTime'] or hangout.endTime
+		hangout.title = req['title'] if req['title'] else hangout.title
+		hangout.link = req['link'] if req['link'] else hangout.link
+		hangout.image = req['image'] if req['image'] else hangout.image
+		hangout.open = value if value else hangout.open
+		hangout.category = req['category'] if req['category'] else hangout.category
+		hangout.startDate = req['startDate'] if req['startDate'] else hangout.startDate
+		hangout.endDate = req['endDate'] if req['endDate'] else hangout.endDate
+		hangout.startTime = req['startTime'] if req['startTime'] else hangout.startTime
+		hangout.endTime = req['endTime'] if req['endTime'] else hangout.endTime
+		hangout.description = req['description'] if req['description'] else hangout.description
 		hangout.updatedAt = datetime.now()
 		db.session.commit()
 		return hangout.to_dict()

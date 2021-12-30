@@ -32,6 +32,7 @@
 .logo-nav {
   height: 4rem;
   width: auto;
+  cursor: pointer;
 }
 .nav-bar span {
   display: flex;

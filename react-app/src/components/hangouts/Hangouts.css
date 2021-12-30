@@ -24,6 +24,11 @@
   width: 100%;
   aspect-ratio: 16/9;
 }
+.title {
+  text-decoration: underline;
+  font-family: Neue Plak, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, Helvetica, Tahoma, Arial, sans-serif;
+}
 .info {
   padding: 2rem;
   display: flex;
@@ -36,9 +41,24 @@
   height: auto;
   margin: 2rem;
 }
+.main-info {
+  display: flex;
+}
+.main-info2 {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+}
+.main-info2 {
+  margin: 1rem;
+}
 .image {
   display: flex;
   max-height: 30rem;
+  width: 50%;
+}
+.description-box {
+  margin: 2rem;
 }
 .dropdown-button {
   background-color: rgb(218, 159, 147);
@@ -46,6 +66,7 @@
   font-size: 16px;
   border: none;
   float: right;
+  cursor: pointer;
 }
 .tool-dropdown {
   position: relative;
@@ -75,4 +96,18 @@
 .dropdown-content div:hover {
   background-color: rgb(137, 6, 32);
 }
+.detail-add-remove {
+  background-color: rgb(218, 159, 147);
+  color: black;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  height: 2rem;
+  width: 75%;
+  border-radius: 15px;
+}
+.detail-add-remove:hover {
+  background-color: rgb(137, 6, 32);
+}
+
 /* add drop shadow, hover effect, and spacing between */

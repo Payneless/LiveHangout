@@ -40,11 +40,15 @@ const Edit = () => {
       endTime,
       description,
     };
-    await dispatch(editAHangout(hangoutId, payload)).catch(async (res) => {
-      const hangoutData = await res.json();
-      if (hangoutData && hangoutData.errors) setErrors(hangoutData.errors);
-    });
-    history.push("/home");
+    const res = await dispatch(editAHangout(hangoutId, payload));
+    if (res) {
+      const hangoutData = res;
+      console.log(hangoutData);
+      setErrors(hangoutData);
+    }
+    if (errors.length == 0) {
+      history.push("/home");
+    }
   };
 
   return (
