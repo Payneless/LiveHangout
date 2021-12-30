@@ -16,8 +16,8 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
   const hangout = useSelector((state) => state.hangouts[hangoutId]);
   const [notRsvpd, setNotRsvpd] = useState(true);
   const [bookmarked, setBookmarked] = useState(false);
-  const sessionUser = useSelector((state) => state.session.user);
-  console.log("open", hangout.open);
+  const sessionUser = useSelector((state) => state.session?.user);
+  console.log("open", hangout.open, hangoutId);
 
   const RSVPadd = async (hangoutId, userId) => {
     dispatch(AddRsvp(hangoutId, userId));
@@ -41,8 +41,7 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
   };
   useEffect(() => {
     hangout.rsvps.forEach((rsvp) => {
-      console.log("yop", rsvp.userId, sessionUser.id);
-      if (rsvp.user === sessionUser.id) {
+      if (rsvp?.user === sessionUser?.id) {
         setNotRsvpd(false);
       }
     });
@@ -50,7 +49,7 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
 
   return (
     <div className="hangout-detail">
-      {sessionUser.id === hangout.hostId && (
+      {sessionUser?.id === hangout.hostId && (
         <div className="tool-dropdown">
           <button className="dropdown-button">Options</button>
           <div className="dropdown-content">
@@ -74,7 +73,7 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
         <div className="main-info2">
           <div className="detail-title">{hangout.title}</div>
           <div className="detail-host">Host: {hangout.host}</div>
-          {hangout.open == true ? (
+          {hangout.open == true && sessionUser ? (
             <>
               <div className="detail-rsvps">RSVPs: {hangout.rsvps.length}</div>
               {notRsvpd ? (
@@ -98,20 +97,24 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
               <div className="detail-bookmarks">
                 Bookmarks: {hangout.bookmarks.length}
               </div>
-              {!bookmarked ? (
-                <button
-                  className="detail-add-remove"
-                  onClick={() => BookmarkAdd(hangoutId, sessionUser.id)}
-                >
-                  Bookmark
-                </button>
-              ) : (
-                <button
-                  className="detail-add-remove"
-                  onClick={() => BookmarkDelete(hangoutId, sessionUser.id)}
-                >
-                  Remove
-                </button>
+              {sessionUser && (
+                <>
+                  {!bookmarked ? (
+                    <button
+                      className="detail-add-remove"
+                      onClick={() => BookmarkAdd(hangoutId, sessionUser.id)}
+                    >
+                      Bookmark
+                    </button>
+                  ) : (
+                    <button
+                      className="detail-add-remove"
+                      onClick={() => BookmarkDelete(hangoutId, sessionUser.id)}
+                    >
+                      Remove
+                    </button>
+                  )}
+                </>
               )}
             </>
           )}

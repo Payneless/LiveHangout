@@ -1,0 +1,20 @@
+.hangout-form {
+  display: flex;
+  flex-direction: column;
+}
+.hangout-form > input {
+  width: 20%;
+}
+.hangout-form > select {
+  width: 20%;
+}
+.hangout-form > div {
+  width: 20%;
+}
+.hangout-form > textarea {
+  width: 20%;
+  height: 20rem;
+}
+.hangout-form > button {
+  width: 20%;
+}

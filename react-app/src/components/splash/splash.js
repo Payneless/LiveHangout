@@ -5,15 +5,23 @@ import LoginForm from "../auth/LoginForm";
 import { Modal } from "../../context/modal";
 import { useState } from "react";
 import { getAllHangouts } from "../../store/hangouts";
+import HangoutDetail from "../hangouts/HangoutDetail";
 import "./splash.css";
 
 const Splash = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+  const [hangout, setHangout] = useState("");
+  const [hangoutModal, setHangoutModal] = useState("");
   const sessionUser = useSelector((state) => state.session.user);
   const hangouts = useSelector((state) => Object.values(state.hangouts));
   hangouts?.sort((a, b) => b.rsvps.length - a.rsvps.length);
+
+  const displayHangout = (id) => {
+    setHangout(id);
+    setHangoutModal(true);
+  };
   const prompt = () =>
     sessionUser ? history.push("/home") : setShowModal(true);
 
@@ -22,7 +30,7 @@ const Splash = () => {
   }, [dispatch]);
   return (
     <div className="splash-page">
-      <div className="event">
+      <div className="event" onClick={() => displayHangout(hangouts[0].id)}>
         <img
           src={hangouts[0]?.image}
           className="photo"
@@ -67,7 +75,7 @@ const Splash = () => {
           </div>
         </div>
       </div>
-      <div className="event">
+      <div className="event" onClick={() => displayHangout(hangouts[1].id)}>
         <img
           src={hangouts[1]?.image}
           className="photo"
@@ -87,6 +95,11 @@ const Splash = () => {
           </span>
         </div>
       </div>
+      {hangoutModal && (
+        <Modal onClose={() => setHangoutModal(false)}>
+          <HangoutDetail hangoutId={hangout} setShowModal={setHangoutModal} />
+        </Modal>
+      )}
     </div>
   );
 };

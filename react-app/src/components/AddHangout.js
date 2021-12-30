@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { addAHangout } from "../store/hangouts";
+import "./AddHangout.css";
 
 const Add = () => {
   const dispatch = useDispatch();
@@ -54,28 +55,33 @@ const Add = () => {
             <li key={idx}>{error}</li>
           ))}
         </ul>
+        Title:
         <input
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
           placeholder="Title"
         />
+        Discord Link:
         <input
           type="text"
           onChange={(e) => setLink(e.target.value)}
           value={link}
           placeholder="Discord Link"
         />
+        Banner Image:
         <input
           type="text"
           onChange={(e) => setImage(e.target.value)}
           value={image}
           placeholder="Image"
         />
+        Status:
         <div onChange={(e) => setOpen(e.target.value)}>
           <input type="radio" value="true" name="open" /> Open
           <input type="radio" value="false" name="open" /> Not Open
         </div>
+        Category:
         <select onChange={(e) => setCategory(e.target.value)}>
           <option value="disabled">Category</option>
           <option value="Chill">Chill</option>
@@ -84,41 +90,41 @@ const Add = () => {
           <option value="Workshop">Workshop</option>
           <option value="AMA">AMA</option>
         </select>
+        Start Date:
         <input
           type="date"
           onChange={(e) => setStartDate(e.target.value)}
           value={startDate}
           placeholder="date"
         />
-        Start Date
+        End Date:
         <input
           type="date"
           onChange={(e) => setEndDate(e.target.value)}
           value={endDate}
           placeholder="date"
         />
-        End Date
+        Start Time:
         <input
           type="time"
           onChange={(e) => setStartTime(e.target.value)}
           value={startTime}
           placeholder="time"
         />
-        Start Time
+        End Time:
         <input
           type="time"
           onChange={(e) => setEndTime(e.target.value)}
           value={endTime}
           placeholder="time"
         />
-        End Time
+        Tell us about your hangout!
         <textarea
           type="text"
           onChange={(e) => setDescription(e.target.value)}
           value={description}
           placeholder="Description"
         />
-        Tell us about your hangout!
         <button className="submit-button" type="submit">
           Create
         </button>
