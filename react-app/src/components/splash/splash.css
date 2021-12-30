@@ -1,10 +1,11 @@
 .explore {
-  width: 8rem;
+  width: 20rem;
   height: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(137, 6, 32);
+  cursor: pointer;
 }
 .mag-glass {
   height: 50px;
@@ -35,8 +36,9 @@
   padding: 3rem;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
-.welcome {
+.splash-welcome {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,8 +53,14 @@
 .logo {
   height: 10rem;
   width: auto;
+  max-width: 15rem;
+  min-width: 5rem;
 }
 .splash-welcome {
   display: flex;
   flex-direction: column;
+}
+.splash-description {
+  font-family: "Heebo", sans-serif;
+  font-weight: 800;
 }
