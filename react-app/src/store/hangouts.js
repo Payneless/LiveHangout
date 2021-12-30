@@ -100,7 +100,11 @@ export const addAHangout = (hangout) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(add(data));
-    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
   }
 };
 
@@ -114,7 +118,11 @@ export const editAHangout = (hangoutId, hangout) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(update(data));
-    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
   }
 };
 
@@ -137,7 +145,6 @@ export const AddRsvp = (hangoutId, userId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(addRSVP(data));
-    return data;
   }
 };
 
@@ -159,7 +166,6 @@ export const AddBookmark = (hangoutId, userId) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(addBookmark(data));
-    return data;
   }
 };
 

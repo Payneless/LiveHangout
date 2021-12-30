@@ -35,11 +35,15 @@ const Add = () => {
       endTime,
       description,
     };
-    await dispatch(addAHangout(payload)).catch(async (res) => {
-      const hangoutData = await res.json();
-      if (hangoutData && hangoutData.errors) setErrors(hangoutData.errors);
-    });
-    history.push("/new");
+    const res = await dispatch(addAHangout(payload));
+    if (res) {
+      const hangoutData = res;
+      console.log(hangoutData);
+      setErrors(hangoutData);
+    }
+    if (errors.length == 0) {
+      history.push("/new");
+    }
   };
 
   return (
