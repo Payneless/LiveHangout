@@ -6,3 +6,9 @@
 .is-blurred {
   filter: blur(10px);
 }
+.errors-list {
+  background-color: rgb(44, 7, 3);
+  width: 20%;
+  border-radius: 5px;
+  color: white;
+}
