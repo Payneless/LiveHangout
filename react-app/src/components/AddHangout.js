@@ -79,7 +79,8 @@ const Add = () => {
         setErrors(hangoutData);
       }
       if (errors.length == 0) {
-        history.push("/home");
+        setSuccess(true);
+        setTimeout(() => history.push("/home"), 3000);
       }
     }
   };
@@ -167,7 +168,18 @@ const Add = () => {
           Create
         </button>
       </form>
-      <div className="right-container"></div>
+      <div className="right-container">
+        {success && (
+          <>
+            <div className="success-submit">
+              <img
+                src="https://cdn.discordapp.com/attachments/897232495580414045/927092877534834708/1200px-Eo_circle_green_white_checkmark.svg.png"
+                alt="success"
+              />
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };

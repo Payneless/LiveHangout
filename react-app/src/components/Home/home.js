@@ -7,11 +7,19 @@ import "./home.css";
 const Home = () => {
   const dispatch = useDispatch();
   const hangouts = useSelector((state) => Object.values(state.hangouts));
+  console.log("hangouts", new Date());
+  const hangoutsUpcoming = hangouts.filter(
+    (hangout) => new Date(hangout.endDate) > new Date()
+  );
   const sortedHangouts = useSelector((state) => Object.values(state.hangouts));
+  const sortedHangoutsUpcoming = sortedHangouts.filter(
+    (hangout) => new Date(hangout.endDate) > new Date()
+  );
+  console.log("test", hangoutsUpcoming);
   const [selected, setSelected] = useState(null);
-  sortedHangouts?.sort((a, b) => b.rsvps.length - a.rsvps.length);
+  sortedHangoutsUpcoming?.sort((a, b) => b.rsvps.length - a.rsvps.length);
   const categories = new Set();
-  hangouts?.map(({ category }) => categories.add(category));
+  hangoutsUpcoming?.map(({ category }) => categories.add(category));
   const catArr = Array.from(categories);
 
   useEffect(() => {
@@ -46,8 +54,10 @@ const Home = () => {
         <Hangouts
           hangouts={
             selected
-              ? sortedHangouts.filter((hangout) => hangout.category == selected)
-              : sortedHangouts
+              ? sortedHangoutsUpcoming.filter(
+                  (hangout) => hangout.category == selected
+                )
+              : sortedHangoutsUpcoming
           }
         />
       </div>
@@ -57,10 +67,10 @@ const Home = () => {
         <Hangouts
           hangouts={
             selected
-              ? hangouts
+              ? hangoutsUpcoming
                   .filter((hangout) => hangout.category == selected)
                   .reverse()
-              : hangouts.reverse()
+              : hangoutsUpcoming.reverse()
           }
         />
       </div>
