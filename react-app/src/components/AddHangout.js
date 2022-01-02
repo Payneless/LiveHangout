@@ -18,32 +18,69 @@ const Add = () => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [description, setDescription] = useState("");
+  const [success, setSuccess] = useState(false);
   const [errors, setErrors] = useState([]);
+  const [errCheck, setErrCheck] = useState(false);
+
+  const validator = () => {
+    let error = [];
+    let present = new Date();
+    console.log("present date", present, startDate);
+
+    if (title.length > 50) {
+      error.push(": Please enter a Title shorter than 50 characters");
+    } else if (title.length < 4) {
+      error.push(": Please enter a title longer than 4 characters");
+    }
+
+    if (!/https:\/\/discord.gg\/.+/gi.test(link)) {
+      error.push(": Link must be a Discord invite link");
+    }
+
+    if (new Date(startDate) <= present) {
+      error.push(": Start date must be in the future");
+    }
+
+    if (endDate < startDate) {
+      error.push(": End date must be after Start date");
+    }
+
+    if (10 > description.length) {
+      error.push(": Description must be between 10 and 2000 characters");
+    }
+    return error;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("1", host.id);
-    const payload = {
-      host: host.id,
-      title,
-      link,
-      image,
-      open,
-      category,
-      startDate,
-      endDate,
-      startTime,
-      endTime,
-      description,
-    };
-    const res = await dispatch(addAHangout(payload));
-    if (res) {
-      const hangoutData = res;
-      console.log(hangoutData);
-      setErrors(hangoutData);
-    }
-    if (errors.length == 0) {
-      history.push("/home");
+    const errorsArr = validator();
+    if (errorsArr.length) {
+      setErrCheck(true);
+      setErrors(errorsArr);
+      return;
+    } else {
+      setErrCheck(false);
+      const payload = {
+        host: host.id,
+        title,
+        link,
+        image,
+        open,
+        category,
+        startDate,
+        endDate,
+        startTime,
+        endTime,
+        description,
+      };
+      const res = await dispatch(addAHangout(payload));
+      if (res) {
+        const hangoutData = res;
+        setErrors(hangoutData);
+      }
+      if (errors.length == 0) {
+        history.push("/home");
+      }
     }
   };
 
@@ -51,9 +88,9 @@ const Add = () => {
     <div className="new-hangout-form">
       <div className="left-container"></div>
       <form onSubmit={handleSubmit} className="hangout-form">
-        <ul className="errors-list">
+        <ul className={`errors-list error-${errCheck}`}>
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li key={idx}>{error.split(":")}</li>
           ))}
         </ul>
         <div className="label-input">Title:</div>

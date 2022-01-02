@@ -63,7 +63,9 @@ def sign_up():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User(
-            username=form.data['username'],
+            discordHandle=form.data['discordHandle'],
+            fName=form.data['fName'],
+            profilePhoto=form.data['profilePhoto'] if len(form.data['profilePhoto']) is not 0 else "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
             email=form.data['email'],
             password=form.data['password']
         )
