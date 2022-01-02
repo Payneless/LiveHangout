@@ -43,45 +43,46 @@ const Add = () => {
       setErrors(hangoutData);
     }
     if (errors.length == 0) {
-      history.push("/new");
+      history.push("/home");
     }
   };
 
   return (
     <div className="new-hangout-form">
+      <div className="left-container"></div>
       <form onSubmit={handleSubmit} className="hangout-form">
         <ul className="errors-list">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        Title:
+        <div className="label-input">Title:</div>
         <input
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
           placeholder="Title"
         />
-        Discord Link:
+        <div className="label-input">Discord Link:</div>
         <input
           type="text"
           onChange={(e) => setLink(e.target.value)}
           value={link}
           placeholder="Discord Link"
         />
-        Banner Image:
+        <div className="label-input">Banner Image:</div>
         <input
           type="text"
           onChange={(e) => setImage(e.target.value)}
           value={image}
-          placeholder="Image"
+          placeholder="Uploaded Image"
         />
-        Status:
+        <div className="label-input">Status:</div>
         <div onChange={(e) => setOpen(e.target.value)}>
           <input type="radio" value="true" name="open" /> Open
           <input type="radio" value="false" name="open" /> Not Open
         </div>
-        Category:
+        <div className="label-input">Category:</div>
         <select onChange={(e) => setCategory(e.target.value)}>
           <option value="disabled">Category</option>
           <option value="Chill">Chill</option>
@@ -90,35 +91,35 @@ const Add = () => {
           <option value="Workshop">Workshop</option>
           <option value="AMA">AMA</option>
         </select>
-        Start Date:
+        <div className="label-input">Start Date:</div>
         <input
           type="date"
           onChange={(e) => setStartDate(e.target.value)}
           value={startDate}
           placeholder="date"
         />
-        End Date:
+        <div className="label-input">End Date:</div>
         <input
           type="date"
           onChange={(e) => setEndDate(e.target.value)}
           value={endDate}
           placeholder="date"
         />
-        Start Time:
+        <div className="label-input">Start Time:</div>
         <input
           type="time"
           onChange={(e) => setStartTime(e.target.value)}
           value={startTime}
           placeholder="time"
         />
-        End Time:
+        <div className="label-input">End Time:</div>
         <input
           type="time"
           onChange={(e) => setEndTime(e.target.value)}
           value={endTime}
           placeholder="time"
         />
-        Tell us about your hangout!
+        <div className="label-input">Tell us about your hangout!</div>
         <textarea
           type="text"
           onChange={(e) => setDescription(e.target.value)}
@@ -129,6 +130,7 @@ const Add = () => {
           Create
         </button>
       </form>
+      <div className="right-container"></div>
     </div>
   );
 };
