@@ -1,12 +1,31 @@
+.new-hangout-form {
+  display: flex;
+}
+.left-container {
+  width: 25%;
+}
+.right-container {
+  width: 25%;
+}
 .hangout-form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 .hangout-form > input {
   width: 20%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  transition-duration: 0.5s;
 }
 .hangout-form > select {
   width: 20%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
 }
 .hangout-form > div {
   width: 20%;
@@ -17,4 +36,14 @@
 }
 .hangout-form > button {
   width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(235, 212, 203);
+  border: none;
+  border-radius: 5px;
+}
+.label-input {
+  font-family: "Heebo", sans-serif;
+  font-weight: 800;
 }

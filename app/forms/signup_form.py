@@ -12,16 +12,18 @@ def user_exists(form, field):
         raise ValidationError('Email address is already in use.')
 
 
-def username_exists(form, field):
+def dHandle_exists(form, field):
     # Checking if username is already in use
-    username = field.data
-    user = User.query.filter(User.username == username).first()
+    dHandle = field.data
+    user = User.query.filter(User.discordHandle == dHandle).first()
     if user:
-        raise ValidationError('Username is already in use.')
+        raise ValidationError('Discord Handle is already in use.')
 
 
 class SignUpForm(FlaskForm):
-    username = StringField(
-        'username', validators=[DataRequired(), username_exists])
+    discordHandle = StringField(
+        'discordHandle', validators=[DataRequired(), dHandle_exists])
+    fName= StringField("firstName", validators=[DataRequired()])
+    profilePhoto = StringField("profilePhoto")
     email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired()])
