@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import "./profile.css";
 
 function User() {
+  const dispatch = useDispatch();
   const [user, setUser] = useState({});
   const { userId } = useParams();
+  const hangouts = useSelector((state) => Object.values(state.hangouts));
 
   useEffect(() => {
+    dispatch(getAllHangouts());
     if (!userId) {
       return;
     }
@@ -21,21 +26,16 @@ function User() {
   }
 
   return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <img src={user.profilePhoto} alt="profile photo"></img>
-      <li>
-        <strong>Username</strong> {user.fName}
-      </li>
-      <li>
-        <strong>Discord Handle</strong> {user.discordHandle}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-    </ul>
+    <div className="profile">
+      <div className="left-profile">
+        <img src={} alt="profile-photo" />
+      </div>
+      <div className="right-profile">
+        <div className="created-hangouts">Created</div>
+        <div className="rsvpd-hangouts">RSVPd</div>
+        <div className="bookmarked-hangouts">Bookmarked</div>
+      </div>
+    </div>
   );
 }
 export default User;
