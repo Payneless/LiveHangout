@@ -35,16 +35,19 @@
 }
 .created-hangouts {
   display: flex;
+  width: 100%;
   flex-direction: row;
   overflow-x: scroll;
 }
 .rsvpd-hangouts {
   display: flex;
+  width: 100%;
   flex-direction: row;
   overflow-x: scroll;
 }
 .bookmarked-hangouts {
   display: flex;
+  width: 100%;
   flex-direction: row;
   overflow-x: scroll;
 }
