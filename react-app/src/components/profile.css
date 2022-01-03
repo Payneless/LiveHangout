@@ -4,4 +4,53 @@
 .right-profile {
   display: flex;
   flex-direction: column;
+  margin: 5rem;
+}
+.left-profile {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  margin-left: 5rem;
+  border-right: 3px solid rgb(44, 7, 3);
+  height: 100vh;
+}
+.profile-photo {
+  border-radius: 25px;
+  height: 10rem;
+  width: auto;
+  margin: 2rem;
+}
+
+.profile-hangout {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  height: 20rem;
+  margin: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 0.55rem;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+.created-hangouts {
+  display: flex;
+  flex-direction: row;
+}
+.rsvpd-hangouts {
+  display: flex;
+  flex-direction: row;
+}
+.bookmarked-hangouts {
+  display: flex;
+  flex-direction: row;
+}
+.profile-hangout-photo {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+.label-profile {
+  margin-right: 3rem;
+  font-family: "Heebo", sans-serif;
+  font-weight: 800;
 }

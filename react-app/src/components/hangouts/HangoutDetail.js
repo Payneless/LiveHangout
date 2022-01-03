@@ -17,7 +17,6 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
   const [notRsvpd, setNotRsvpd] = useState(true);
   const [bookmarked, setBookmarked] = useState(false);
   const sessionUser = useSelector((state) => state.session?.user);
-  console.log("open", hangout.open, hangoutId);
 
   const RSVPadd = async (hangoutId, userId) => {
     dispatch(AddRsvp(hangoutId, userId));
@@ -43,6 +42,11 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
     hangout.rsvps.forEach((rsvp) => {
       if (rsvp?.user === sessionUser?.id) {
         setNotRsvpd(false);
+      }
+    });
+    hangout.bookmarks.forEach((bookmark) => {
+      if (bookmark?.user === sessionUser?.id) {
+        setBookmarked(true);
       }
     });
   }, []);
