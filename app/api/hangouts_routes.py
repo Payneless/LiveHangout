@@ -42,7 +42,7 @@ def create_hangout():
 			host=form.data['host'],
 			title=form.data['title'],
 			link=form.data['link'],
-			image=form.data['image'] if len(form.data['image']) is not 0 else "https://cdn.discordapp.com/attachments/897232495580414045/927094319511400498/placeholder.png",
+			image=form.data['image'],
 			open= form.data['open'],
 			category= form.data['category'],
 			startDate= form.data['startDate'],
