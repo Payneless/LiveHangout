@@ -57,7 +57,7 @@ const NavBar = () => {
                     : "https://cdn.discordapp.com/attachments/897232495580414045/927354900982157332/profile-default.png"
                 }
                 alt="profile-photo"
-                onClick={() => history.push(`${sessionUser.id}/profile`)}
+                onClick={() => history.push(`/${sessionUser.id}/profile`)}
               />
 
               <LogoutButton />

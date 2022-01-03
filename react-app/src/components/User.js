@@ -31,8 +31,8 @@ function User() {
     }
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
+      const currentUser = await response.json();
+      setUser(currentUser);
     })();
     setisLoaded(true);
   }, [userId]);
