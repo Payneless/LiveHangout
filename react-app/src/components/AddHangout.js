@@ -51,7 +51,6 @@ const Add = () => {
   };
 
   const handleSubmit = async (e) => {
-    setErrors([]);
     e.preventDefault();
     const errorsArr = validator();
     if (errorsArr.length) {
@@ -164,7 +163,11 @@ const Add = () => {
           value={description}
           placeholder="Description"
         />
-        <button className="submit-button" type="submit">
+        <button
+          className="submit-button"
+          type="submit"
+          onClick={() => setErrors([])}
+        >
           Create
         </button>
       </form>
