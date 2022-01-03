@@ -8,7 +8,7 @@ class Hangout(db.Model):
 	host=db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 	title=db.Column(db.String, nullable=False)
 	link=db.Column(db.String, nullable=False)
-	image=db.Column(db.String, nullable=False, default="https://cdn.discordapp.com/attachments/897232495580414045/927094319511400498/placeholder.png")
+	image=db.Column(db.String, nullable=False)
 	description=db.Column(db.String, nullable=False)
 	open=db.Column(db.Boolean, nullable=False)
 	category=db.Column(db.String, nullable=False)
