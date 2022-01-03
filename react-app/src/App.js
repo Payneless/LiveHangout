@@ -11,6 +11,7 @@ import Splash from "./components/splash/splash";
 import Home from "./components/Home/home";
 import Add from "./components/AddHangout";
 import Edit from "./components/EditHangout";
+import Footer from "./components/footer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -59,6 +60,7 @@ function App() {
           <User />
         </ProtectedRoute> */}
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

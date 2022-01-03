@@ -12,3 +12,42 @@
   border-radius: 5px;
   color: white;
 }
+.footer {
+  display: flex;
+  width: 100%;
+  position: sticky;
+  justify-content: flex-end;
+  bottom: 0px;
+  left: 10px;
+  height: 5rem;
+  gap: 1rem;
+}
+.footer-circle {
+  display: flex;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(218, 159, 147);
+}
+.footer-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  width: 16rem;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  background-color: rgb(218, 159, 147);
+}
+.github {
+  height: 2.5rem;
+  width: 2.5rem;
+}
