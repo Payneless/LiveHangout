@@ -28,6 +28,12 @@ React.js and Redux for the front end and Python with Flask for the backend.
 
 ![image](https://user-images.githubusercontent.com/26901356/147898477-ef3325df-60f3-49e6-b2cd-2af10183ad55.png)
 
+
+## Backend Technologies Used
+
+![image](https://user-images.githubusercontent.com/26901356/147898617-39db227d-4bab-4a56-9a76-d5450d7fc766.png)
+
+
 # Project Installation
 
 1. Clone the project repository from https://github.com/Payneless/LiveHangout
