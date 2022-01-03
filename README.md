@@ -22,6 +22,12 @@ React.js and Redux for the front end and Python with Flask for the backend.
 ![ezgif-5-e45073c15b](https://user-images.githubusercontent.com/26901356/147898244-3df983ac-7a1c-4599-bd99-71ea4fae3c47.gif)
 
 * You can select your profile image in the top right of the nav bar as well to be taken to your profile, which features some basic info about you, as well as hangouts you've made, what you've rsvp'd, and what you've bookmarked.
+
+
+## FrontEnd Technologies Used
+
+![image](https://user-images.githubusercontent.com/26901356/147898477-ef3325df-60f3-49e6-b2cd-2af10183ad55.png)
+
 # Project Installation
 
 1. Clone the project repository from https://github.com/Payneless/LiveHangout
