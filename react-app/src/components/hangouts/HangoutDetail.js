@@ -76,7 +76,15 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
         <img src={hangout.image} className="image" />
         <div className="main-info2">
           <div className="detail-title">{hangout.title}</div>
-          <div className="detail-host">Host: {hangout.host}</div>
+          <div
+            onClick={() => {
+              setShowModal(false);
+              history.push(`/${hangout.hostId}/profile`);
+            }}
+            className="detail-host"
+          >
+            Host: {hangout.host}
+          </div>
           {hangout.open == true && sessionUser ? (
             <>
               <div className="detail-rsvps">RSVPs: {hangout.rsvps.length}</div>

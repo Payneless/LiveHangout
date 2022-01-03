@@ -50,7 +50,7 @@ const Home = () => {
       </div>
       <div className="popular-container">
         {" "}
-        Most Popular
+        <div className="hangout-label-home">Most Popular</div>
         <Hangouts
           hangouts={
             selected
@@ -63,7 +63,7 @@ const Home = () => {
       </div>
       <div className="random-container">
         {" "}
-        New Hangouts
+        <div className="hangout-label-home">New Hangouts</div>
         <Hangouts
           hangouts={
             selected

@@ -9,10 +9,12 @@ def seed_users():
         fName='marnie', discordHandle='Marnie#1234', profilePhoto='https://www.howtogeek.com/wp-content/uploads/2021/07/Discord-Logo-Lede.png?height=200p&trim=2,2,2,2', email='marnie@aa.io', password='password')
     bobbie = User(
         fName='bobbie', discordHandle='Bobbie#5432', profilePhoto='https://better-default-discord.netlify.app/Icons/Gradient-Red.png', email='bobbie@aa.io', password='password')
-
+    jake = User(
+        fName='jake', discordHandle='Payneless#0001', profilePhoto='https://cdn.discordapp.com/attachments/920440490548146189/927357822616879114/61a225f12c3c5d774fa7741d78d9b074--guitar-hero-rock-on.jpg', email='payne96@live.com', password='Cloud9')
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(jake)
 
     db.session.commit()
 

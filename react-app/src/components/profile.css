@@ -36,14 +36,17 @@
 .created-hangouts {
   display: flex;
   flex-direction: row;
+  overflow-x: scroll;
 }
 .rsvpd-hangouts {
   display: flex;
   flex-direction: row;
+  overflow-x: scroll;
 }
 .bookmarked-hangouts {
   display: flex;
   flex-direction: row;
+  overflow-x: scroll;
 }
 .profile-hangout-photo {
   width: 100%;

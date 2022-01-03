@@ -63,4 +63,8 @@
 .splash-description {
   font-family: "Heebo", sans-serif;
   font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
 }
