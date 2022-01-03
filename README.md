@@ -1,6 +1,6 @@
 # LiveHangout
 
-LiveHangout exists to connect people online to events and hangouts of various kinds in order to help meet others with similar interests, or just provide yourself with an entertaining time!
+[LiveHangout](http://live-hangouts.herokuapp.com/) exists to connect people online to events and hangouts of various kinds in order to help meet others with similar interests, or just provide yourself with an entertaining time!
 The project was inspired by Eventbrite and built using Javascript,
 React.js and Redux for the front end and Python with Flask for the backend.
 
