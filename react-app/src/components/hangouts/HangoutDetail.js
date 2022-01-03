@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddBookmark,
@@ -96,12 +96,18 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
                   RSVP
                 </button>
               ) : (
-                <button
-                  className="detail-add-remove"
-                  onClick={() => RSVPdelete(hangoutId, sessionUser.id)}
-                >
-                  Cancel
-                </button>
+                <>
+                  <button
+                    className="detail-add-remove"
+                    onClick={() => RSVPdelete(hangoutId, sessionUser.id)}
+                  >
+                    Cancel
+                  </button>
+                  Come Join Here:
+                  <a className="discord-link" href={hangout.link} target="_blank">
+                    <div>{hangout.link}</div>
+                  </a>
+                </>
               )}
             </>
           ) : (

@@ -173,6 +173,7 @@ const Add = () => {
           <>
             <div className="success-submit">
               <img
+                className="success-submit-img"
                 src="https://cdn.discordapp.com/attachments/897232495580414045/927092877534834708/1200px-Eo_circle_green_white_checkmark.svg.png"
                 alt="success"
               />
