@@ -25,7 +25,6 @@ const Add = () => {
   const validator = () => {
     let error = [];
     let present = new Date();
-    console.log("present date", present, startDate);
 
     if (title.length > 50) {
       error.push(": Please enter a Title shorter than 50 characters");
@@ -52,6 +51,7 @@ const Add = () => {
   };
 
   const handleSubmit = async (e) => {
+    setErrors([]);
     e.preventDefault();
     const errorsArr = validator();
     if (errorsArr.length) {
