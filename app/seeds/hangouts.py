@@ -17,6 +17,18 @@ def seed_hangouts():
 	FutureEvent = Hangout(
 		host=1, title="The Future Discussion", link="https://discord.gg/jJvff5Y6Ef", image="https://images.immediate.co.uk/production/volatile/sites/4/2018/08/22-ideas-606ea9b.jpg?webp=true&quality=90&crop=8px%2C0px%2C1183px%2C509px&resize=940%2C399", open=False, description="A talk in the future, about the future! Come discuss potential upcoming technologies and breakthroughs and what they can mean for the world in the coming years.", category="AMA", startDate=date(2022, 4, 1), endDate=date(2022, 4, 2), startTime=time(12,00), endTime=time(00,00)
 	)
+	DnD = Hangout(
+		host=4, title="Session 0", link="https://discord.gg/jJvff5Y6Ef", image="https://cdn.discordapp.com/attachments/920440490548146189/927358397496569887/index.jpg", open=True, description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor leo a diam sollicitudin tempor. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique. Volutpat diam ut venenatis tellus. Dui sapien eget mi proin sed libero enim sed. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Egestas erat imperdiet sed euismod nisi porta. Leo a diam sollicitudin tempor id eu nisl nunc mi. Volutpat odio facilisis mauris sit. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi tristique. Facilisis sed odio morbi quis commodo. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Imperdiet proin fermentum leo vel. Dictumst quisque sagittis purus sit amet volutpat consequat. Vestibulum lectus mauris ultrices eros. Neque aliquam vestibulum morbi blandit cursus. Commodo nulla facilisi nullam vehicula ipsum a arcu cursus vitae. Ornare suspendisse sed nisi lacus. Id venenatis a condimentum vitae sapien pellentesque habitant.", category="Chill", startDate=date(2022, 4, 1), endDate=date(2022, 4, 2), startTime=time(12,00), endTime=time(00,00)
+	)
+	DnD1 = Hangout(
+		host=4, title="Session 1", link="https://discord.gg/jJvff5Y6Ef", image="https://cdn.discordapp.com/attachments/920440490548146189/927358397496569887/index.jpg", open=False, description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porttitor leo a diam sollicitudin tempor. Vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi tristique. Volutpat diam ut venenatis tellus. Dui sapien eget mi proin sed libero enim sed. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Egestas erat imperdiet sed euismod nisi porta. Leo a diam sollicitudin tempor id eu nisl nunc mi. Volutpat odio facilisis mauris sit. Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi tristique. Facilisis sed odio morbi quis commodo. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Imperdiet proin fermentum leo vel. Dictumst quisque sagittis purus sit amet volutpat consequat. Vestibulum lectus mauris ultrices eros. Neque aliquam vestibulum morbi blandit cursus. Commodo nulla facilisi nullam vehicula ipsum a arcu cursus vitae. Ornare suspendisse sed nisi lacus. Id venenatis a condimentum vitae sapien pellentesque habitant.", category="Chill", startDate=date(2022, 4, 8), endDate=date(2022, 4, 9), startTime=time(12,00), endTime=time(00,00)
+	)
+	Example = Hangout(
+		host=2, title="Example 1", link="https://discord.gg/jJvff5Y6Ef", image="https://cdn.discordapp.com/attachments/920440490548146189/927359644953878538/wp2416044.jpg", open=True, description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", category="AMA", startDate=date(2022, 4, 1), endDate=date(2022, 4, 2), startTime=time(12,00), endTime=time(00,00)
+	)
+	ExampleTwo = Hangout(
+		host=3, title="Example 2", link="https://discord.gg/jJvff5Y6Ef", image="https://cdn.discordapp.com/attachments/920440490548146189/927360038660620288/Trophy_1920x1080.jpg", open=False, description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", category="AMA", startDate=date(2022, 4, 1), endDate=date(2022, 4, 2), startTime=time(12,00), endTime=time(00,00)
+	)
 
 
 	db.session.add(demo)
@@ -24,6 +36,11 @@ def seed_hangouts():
 	db.session.add(ListentoThis)
 	db.session.add(CodeAlong)
 	db.session.add(FutureEvent)
+	db.session.add(DnD)
+	db.session.add(DnD1)
+	db.session.add(Example)
+	db.session.add(ExampleTwo)
+
 
 	db.session.commit()
 

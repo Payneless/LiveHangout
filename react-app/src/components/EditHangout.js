@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { editAHangout } from "../store/hangouts";
 import { getOneHangout } from "../store/hangouts";
+import "./AddHangout.css";
 
 const Edit = () => {
   const dispatch = useDispatch();
@@ -59,28 +60,33 @@ const Edit = () => {
             <li key={idx}>{error}</li>
           ))}
         </ul>
+        <div className="label-input">Title:</div>
         <input
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
           placeholder="Title"
         />
+        <div className="label-input">Discord Link:</div>
         <input
           type="text"
           onChange={(e) => setLink(e.target.value)}
           value={link}
           placeholder="Discord Link"
         />
+        <div className="label-input">Banner Image:</div>
         <input
           type="text"
           onChange={(e) => setImage(e.target.value)}
           value={image}
           placeholder="Image"
         />
+        <div className="label-input">Status:</div>
         <div onChange={(e) => setOpen(e.target.value)}>
           <input type="radio" value="true" name="open" /> Open
           <input type="radio" value="false" name="open" /> Not Open
         </div>
+        <div className="label-input">Category:</div>
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="Chill">Chill</option>
           <option value="Watch Party">Watch Party</option>
@@ -88,41 +94,41 @@ const Edit = () => {
           <option value="Workshop">Workshop</option>
           <option value="AMA">AMA</option>
         </select>
+        <div className="label-input">Start Date:</div>
         <input
           type="date"
           onChange={(e) => setStartDate(e.target.value)}
           value={startDate}
           placeholder="date"
         />
-        Start Date
+        <div className="label-input">End Date:</div>
         <input
           type="date"
           onChange={(e) => setEndDate(e.target.value)}
           value={endDate}
           placeholder="date"
         />
-        End Date
+        <div className="label-input">Start Time:</div>
         <input
           type="time"
           onChange={(e) => setStartTime(e.target.value)}
           value={startTime}
           placeholder="time"
         />
-        Start Time
+        <div className="label-input">End Time:</div>
         <input
           type="time"
           onChange={(e) => setEndTime(e.target.value)}
           value={endTime}
           placeholder="time"
         />
-        End Time
+        <div className="label-input">Edit the Description!</div>
         <textarea
           type="text"
           onChange={(e) => setDescription(e.target.value)}
           value={description}
           placeholder="Description"
         />
-        Edit the Description!
         <button className="submit-button" type="submit">
           Edit
         </button>

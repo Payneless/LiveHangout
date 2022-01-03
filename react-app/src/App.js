@@ -5,14 +5,13 @@ import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./store/session";
-import Hangouts from "./components/hangouts/Hangouts";
 import Splash from "./components/splash/splash";
 import Home from "./components/Home/home";
 import Add from "./components/AddHangout";
 import Edit from "./components/EditHangout";
+import Footer from "./components/footer";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,6 +50,9 @@ function App() {
         <ProtectedRoute path="/:hangoutId/edit" exact={true}>
           <Edit />
         </ProtectedRoute>
+        <ProtectedRoute path="/:userId/profile" exact={true}>
+          <User />
+        </ProtectedRoute>
         {/* <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
@@ -58,6 +60,7 @@ function App() {
           <User />
         </ProtectedRoute> */}
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

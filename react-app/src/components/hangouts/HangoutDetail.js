@@ -17,7 +17,6 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
   const [notRsvpd, setNotRsvpd] = useState(true);
   const [bookmarked, setBookmarked] = useState(false);
   const sessionUser = useSelector((state) => state.session?.user);
-  console.log("open", hangout.open, hangoutId);
 
   const RSVPadd = async (hangoutId, userId) => {
     dispatch(AddRsvp(hangoutId, userId));
@@ -43,6 +42,11 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
     hangout.rsvps.forEach((rsvp) => {
       if (rsvp?.user === sessionUser?.id) {
         setNotRsvpd(false);
+      }
+    });
+    hangout.bookmarks.forEach((bookmark) => {
+      if (bookmark?.user === sessionUser?.id) {
+        setBookmarked(true);
       }
     });
   }, []);
@@ -72,7 +76,15 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
         <img src={hangout.image} className="image" />
         <div className="main-info2">
           <div className="detail-title">{hangout.title}</div>
-          <div className="detail-host">Host: {hangout.host}</div>
+          <div
+            onClick={() => {
+              setShowModal(false);
+              history.push(`/${hangout.hostId}/profile`);
+            }}
+            className="detail-host"
+          >
+            Host: {hangout.host}
+          </div>
           {hangout.open == true && sessionUser ? (
             <>
               <div className="detail-rsvps">RSVPs: {hangout.rsvps.length}</div>

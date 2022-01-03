@@ -18,5 +18,9 @@ class Bookmark(db.Model):
 		return{
 			"id": self.id,
 			"user": self.userId,
-			"hangout": self.hangoutId
+			"hangout": self.hangoutId,
+			"hangoutPhoto": self.hangout.image,
+			"hangoutTitle" : self.hangout.title,
+			"hangoutLink": self.hangout.link,
+			"hangoutHost": self.hangout.user.fName
 		}
