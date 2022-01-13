@@ -13,11 +13,9 @@ function User() {
   const [showModalProfile, setShowModalProfile] = useState(false);
   const [hangoutProfile, setHangoutProfile] = useState("");
   const { userId } = useParams();
-  const hangouts = useSelector((state) => Object.values(state.hangouts));
-  const created = user.hangouts;
-  const bookmarked = user.Bookmarks;
-  const rsvps = user.RSVPs;
-  console.log("bookmarked", bookmarked);
+  let created = user.hangouts;
+  let bookmarked = user.Bookmarks;
+  let rsvps = user.RSVPs;
 
   const displayHangout = (id) => {
     setHangoutProfile(id);
@@ -26,6 +24,9 @@ function User() {
 
   useEffect(() => {
     dispatch(getAllHangouts());
+    created = user.hangouts;
+    bookmarked = user.Bookmarks;
+    rsvps = user.RSVPs;
     if (!userId) {
       return;
     }
@@ -35,7 +36,7 @@ function User() {
       setUser(currentUser);
     })();
     setisLoaded(true);
-  }, [userId]);
+  }, [userId, created, bookmarked, rsvps]);
 
   if (!user) {
     return null;
