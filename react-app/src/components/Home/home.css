@@ -20,6 +20,7 @@
 .categories {
   display: flex;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 .category {
   padding-left: 1.5rem;
