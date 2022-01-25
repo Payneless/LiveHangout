@@ -72,13 +72,7 @@ const Splash = () => {
           </Modal>
         )}
         <div className="preview" onClick={() => prompt()}>
-          <div className="explore">
-            <img
-              className="mag-glass"
-              src="https://cdn.discordapp.com/attachments/897232495580414045/921449580447559791/searchwhite.png"
-              alt="search"
-            />
-          </div>
+          <div className="explore">Explore</div>
         </div>
       </div>
       <div className="event" onClick={() => displayHangout(hangouts[1].id)}>
