@@ -51,6 +51,12 @@ const Splash = () => {
         </div>
       </div>
       <div className="splash-welcome">
+        <span className="splash-description">
+          {" "}
+          LiveHangouts is an online platform for users to publish, advertise,
+          and join online hangouts of various kinds in order to meet new
+          friends, learn, or experience various entertainment!
+        </span>
         <h1 className="welcome-message">Welcome to</h1>
         <img
           className="logo"
@@ -74,12 +80,6 @@ const Splash = () => {
             />
           </div>
         </div>
-        <span className="splash-description">
-          {" "}
-          LiveHangouts is an online platform for users to publish, advertise,
-          and join online hangouts of various kinds in order to meet new
-          friends, learn, or experience various entertainment!
-        </span>
       </div>
       <div className="event" onClick={() => displayHangout(hangouts[1].id)}>
         <img
