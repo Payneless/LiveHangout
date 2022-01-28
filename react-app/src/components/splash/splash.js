@@ -72,7 +72,7 @@ const Splash = () => {
           </Modal>
         )}
         <div className="preview" onClick={() => prompt()}>
-          <div className="explore">Explore</div>
+          <h1 className="explore">Explore</h1>
         </div>
       </div>
       <div className="event" onClick={() => displayHangout(hangouts[1].id)}>

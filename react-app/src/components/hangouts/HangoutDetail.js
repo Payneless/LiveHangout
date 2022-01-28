@@ -59,7 +59,7 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
           <div className="dropdown-content">
             <div
               className="edit-button"
-              onClick={() => history.push(`${hangoutId}/edit`)}
+              onClick={() => history.push(`/${hangoutId}/edit`)}
             >
               Edit
             </div>
@@ -104,7 +104,11 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
                     Cancel
                   </button>
                   Come Join Here:
-                  <a className="discord-link" href={hangout.link} target="_blank">
+                  <a
+                    className="discord-link"
+                    href={hangout.link}
+                    target="_blank"
+                  >
                     <div>{hangout.link}</div>
                   </a>
                 </>
