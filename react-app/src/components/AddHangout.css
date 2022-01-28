@@ -15,6 +15,7 @@
   width: 100%;
 }
 .hangout-form > input {
+  margin: 0.5rem;
   width: 20%;
   background: transparent;
   border: none;
@@ -22,6 +23,7 @@
   transition-duration: 0.5s;
 }
 .hangout-form > select {
+  margin: 0.5rem;
   width: 20%;
   background: transparent;
   border: none;
@@ -31,6 +33,7 @@
   width: 20%;
 }
 .hangout-form > textarea {
+  margin: 0.5rem;
   width: 20%;
   height: 20rem;
 }

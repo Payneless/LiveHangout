@@ -21,6 +21,7 @@
   left: 10px;
   height: 5rem;
   gap: 1rem;
+  z-index: -3;
 }
 .footer-circle {
   display: flex;
