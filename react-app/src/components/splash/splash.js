@@ -51,6 +51,12 @@ const Splash = () => {
         </div>
       </div>
       <div className="splash-welcome">
+        <span className="splash-description">
+          {" "}
+          LiveHangouts is an online platform for users to publish, advertise,
+          and join online hangouts of various kinds in order to meet new
+          friends, learn, or experience various entertainment!
+        </span>
         <h1 className="welcome-message">Welcome to</h1>
         <img
           className="logo"
@@ -66,20 +72,8 @@ const Splash = () => {
           </Modal>
         )}
         <div className="preview" onClick={() => prompt()}>
-          <div className="explore">
-            <img
-              className="mag-glass"
-              src="https://cdn.discordapp.com/attachments/897232495580414045/921449580447559791/searchwhite.png"
-              alt="search"
-            />
-          </div>
+          <h1 className="explore">Explore</h1>
         </div>
-        <span className="splash-description">
-          {" "}
-          LiveHangouts is an online platform for users to publish, advertise,
-          and join online hangouts of various kinds in order to meet new
-          friends, learn, or experience various entertainment!
-        </span>
       </div>
       <div className="event" onClick={() => displayHangout(hangouts[1].id)}>
         <img

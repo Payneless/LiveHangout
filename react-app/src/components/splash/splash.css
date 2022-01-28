@@ -6,6 +6,8 @@
   align-items: center;
   background-color: rgb(137, 6, 32);
   cursor: pointer;
+  color: white;
+  font-family: "Heebo", sans-serif;
 }
 .mag-glass {
   height: 50px;
