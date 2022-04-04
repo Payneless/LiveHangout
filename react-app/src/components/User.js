@@ -36,7 +36,7 @@ function User() {
       setUser(currentUser);
     })();
     setisLoaded(true);
-  }, [userId, created, bookmarked, rsvps]);
+  }, [userId]);
 
   if (!user) {
     return null;
