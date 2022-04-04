@@ -66,7 +66,6 @@
   margin: 1rem;
 }
 .main-info2 > div {
-  padding-top: 2rem;
 }
 
 .image {
@@ -100,6 +99,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  font-family: Neue Plak, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, Helvetica, Tahoma, Arial, sans-serif;
+}
+.date-and-time > span {
+  font-weight: bold;
 }
 .dropdown-button {
   background-color: rgb(218, 159, 147);

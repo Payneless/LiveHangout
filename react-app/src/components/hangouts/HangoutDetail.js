@@ -147,7 +147,7 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
         <div className="description">{hangout.description}</div>
         <div className="dates">
           <div className="date-and-time">
-            Date and Time:
+            <span>Date & Time:</span>
             <div>
               {hangout.startDate.slice(0, 17)} @ {hangout.startTime} GMT
             </div>

@@ -15,6 +15,10 @@
   border-right: 3px solid rgb(44, 7, 3);
   height: 100vh;
 }
+.left-profile > span {
+  font-family: Neue Plak, -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica Neue, Helvetica, Tahoma, Arial, sans-serif;
+}
 .profile-photo {
   border-radius: 25px;
   height: 10rem;
