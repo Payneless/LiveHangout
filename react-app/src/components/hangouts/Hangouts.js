@@ -33,17 +33,9 @@ function Hangouts({ hangouts }) {
             <img src={image} className="photo" alt="hangout_photo"></img>
             <div className="info">
               <span className="title">{title}</span>
-              <span>Hosted by: {host}</span>
-              <span>Open for RSVP: {open.toString()}</span>
+              <span>Starts on: {startDate.slice(0, 17)}</span>
               {open && <span>RSVPs: {rsvps.length}</span>}
               {!open && <span>Bookmarks: {bookmarks.length}</span>}
-              <span>
-                Starts on:{startDate.slice(0, 17)} Ends on:
-                {endDate.slice(0, 17)}
-              </span>
-              <span>
-                Timeframe:{startTime.slice(0, 5)}-{endTime.slice(0, 5)}
-              </span>
             </div>
           </div>
         )
