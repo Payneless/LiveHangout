@@ -83,7 +83,7 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
             }}
             className="detail-host"
           >
-            Host: {hangout.host}
+            Hosted by: {hangout.host}
           </div>
           {hangout.open == true && sessionUser ? (
             <>
@@ -142,8 +142,21 @@ const HangoutDetail = ({ hangoutId, setShowModal }) => {
           )}
         </div>
       </div>
+      <span className="About">About this hangout:</span>
       <div className="description-box">
         <div className="description">{hangout.description}</div>
+        <div className="dates">
+          <div className="date-and-time">
+            Date and Time:
+            <div>
+              {hangout.startDate.slice(0, 17)} @ {hangout.startTime} GMT
+            </div>
+            until
+            <div>
+              {hangout.endDate.slice(0, 17)} @ {hangout.endTime} GMT
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
